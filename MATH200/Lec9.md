@@ -56,3 +56,23 @@ So the tangent plane formula at $P(a, b, c)$ gives:
 
 $$F_x(p)(x-a)+F_y(p)(y-b)+F_z(p)(z-c)=0$$
 
+In fact, ANY surface in three dimensions can be rearranged in such a way so that it becomes a level curve for some function of three variables $F(x, y, z) = 0$.
+
+---
+
+### Chain rule
+
+The chain rule is actually the same as the differential, but from a different perspective.
+
+Suppose $z=f(x, y)$, and $x=x(t), y=y(t)$. So $z$ depends on $x, y$, and both of $x, y$ depend on $t$. So we have $z(t)=f(x(t), y(t))$. Now how do we differentiate $z$ with respect to $t$? 
+
+Lets examine the differential of $f$.
+
+$$\text{d}z = f_x\text{d}x+f_y\text{d}y$$
+
+Remember that the differential tells us the corresponding change in $z$ resulting from changes in $x$ and $y$. But changes in $x, y$ come from changes in $t$! But $\text{d}t$ isn't in this formula. So let's divide by $\text{d}t$.
+
+$$\frac{\text{d}z}{\text{d}t} = f_x\frac{\text{d}x}{\text{d}t} +f_y\frac{\text{d}y}{\text{d}t} $$
+
+Wow! 
+
