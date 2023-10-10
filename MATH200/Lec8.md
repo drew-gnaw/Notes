@@ -16,7 +16,7 @@ All limit secant lines are contained in the plane $z=f(p)+f_x(p)(x-a)+f_y(p)(x-b
 
 Linear approximation of $f(x, y)$ at a point $(a, b) = p$:
 
-$$L(x, y)=f(p)+f_x(p)(x-a)+f_y(p)(x-b)$$
+$$L(x, y)=f(p)+f_x(p)(x-a)+f_y(p)(y-b)$$
 
 Notice! The tangent plane is just the graph of $L(x, y)$, the linear approximation at point $p$.
 
