@@ -1,4 +1,4 @@
-Andrew Wang's Notes. 
+Andrew Wang's Notes. Updated Tuesday-Friday
 
 ---
 
