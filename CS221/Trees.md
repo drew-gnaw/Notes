@@ -28,3 +28,93 @@ We say that a Binary Tree is "full" if every node has $0$ or $2$ children.
 
 The implementation of a Tree is very similar to that of a linked list, but we just have two pointers for the two children.
 
+## Traversals
+
+### In-order
+
+In order traversals have the form 
+
+```cpp
+void inOrder(Node* nd) {
+    if (nd != nullptr) {
+        inOrder(nd->left);
+        visit(nd);
+        inOrder(nd->right);
+    }
+}
+```
+
+This visits the nodes from left to right. In a BST, it would print them out from smallest to largest.
+
+### Pre-order
+
+These are very similar, but we visit the node before its children.
+
+```cpp
+void preOrder(Node* nd) {
+    if (nd != nullptr) {
+        visit(nd);          // visit the node before its children!
+        inOrder(nd->left);
+        inOrder(nd->right);
+    }
+}
+```
+
+This is useful when we are dealing with creating trees. We need to make the node first, then deal with its children. It's also good for copying trees.
+
+### Post-order
+
+Honestly if you can't infer what post-order is at this point it might be over...
+
+```cpp
+void postOrder(Node* nd) {
+    if (nd != nullptr) {
+        inOrder(nd->left);
+        inOrder(nd->right);
+        visit(nd);
+    }
+}
+```
+
+This is useful for deallocation! We can be sure that the children are deallocated before we remove the node itself.
+
+Tip: You can trace around the tree counter-clockwise, and whenever you pass by a node on its (left/under/right), write out its value. Then you have the order of (Pre-order/In-order/Post-order) traversals.
+
+Visiting a node can be doing whatever. Maybe we are copying the node, or getting its value, etc.
+
+### Recursive calls
+
+Imagine we wanted to write a function that gets the height of a tree, given its root. We can do this by adding one to the maximum height of either subtree. Recursion!! (remember the base case: if the head is null, the height is -1). This approach uses a Post-order traversal, since we visit both children before the node itself. (The visit for the current node is us adding 1 to the maximum height).
+
+### Iteration?
+
+We CAN traverse a tree iteratively. This makes use of a stack ADT, as follows:
+
+```cpp
+void prePrint(Node* nd) {
+    Stack<Node*> st;
+    if (nd != NULL) {
+        st.push(nd);
+    }
+
+    while (!st.isEmpty()) {
+        Node* p = st.peek();
+        st.pop();
+        cout << p->data << endl;
+        if (p->right != NULL) {
+            st.push(p->right);
+        }
+        if (p->left != NULL) {
+        st.push(p->left); // we push left in last so that it is on top of the stack
+        }
+    }
+}
+```
+
+This iteratively traverses a tree. The space complexity of this algorithm depends on the height of the tree.
+
+Now, what if we replace the stack with a queue? Then we visit sibling nodes one after the other! This results in a level-order traversal, which traverses the nodes from top to bottom. In this case, the space complexity depends on the width of the tree.
+
+Traversal of a tree, if each visit takes constant time, is generally linear time.
+
+ 
