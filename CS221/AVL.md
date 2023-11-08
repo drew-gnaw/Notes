@@ -89,4 +89,5 @@ We cannot guarantee that nodes in a AVL Tree are stored close to each other in m
 
 Imagine we had a HUUUGE Tree. It's so big that it can't fit on the RAM! So therefore, some of it must be stored on disk.
 
+So what if we stored more relevant data together, so that we minimized disk accesses? That is the goal of B-Trees!
 
