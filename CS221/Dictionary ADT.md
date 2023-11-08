@@ -28,3 +28,6 @@ Now, go read BST.md.
 Okay, now BST's are also taking linear time in the worst case for everything. So what was the point?
 
 Well, this only happens if the trees are in a really shitty shape. We can 'balance' a BST by ensuring that all leaves are about the same distance from the root. The exact allowance varies depending on the context.
+
+(AVLs!!)
+
