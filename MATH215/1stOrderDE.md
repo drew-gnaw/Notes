@@ -45,3 +45,29 @@ Any differential equation is either an ODE or a PDE. In this course, the focus w
 
 **Definition.** The **order** of an ODE is the highest order derivative present in the differential equation.
 
+**Definition.** We say that an ODE is **linear** if it is a linear function of its derivatives. To elaborate on this, if we have the ODE
+
+$$f(y, y', y'', ...) = g(y)\text{,}$$
+
+Then in order for the ODE to be linear, $f(y, y', y'', ...)$ must be able to be written in the form $a_0y + a_1y' + a_2y''+...$, where the values $a_k$ do not depend on $y$ (they may be functions of other variables, however).
+
+---
+
+Why do we care about whether ODEs are linear? Because linear ODEs are much easier to solve, since we can leverage tools from linear algebra. 
+
+**Example 4.** 
+
+$$y''+t^2y=1$$
+
+Is linear, while
+
+$$yy'+y^2=1$$
+
+is not.
+
+---
+
+**Definition.** An **autonomous** ODE is an ODE that doesn't explicitly depend on the independent variable.
+
+For example, the ODE $y'=3y$ is autonomous, since it doesn't depend on $t$ (assuming $y$ is a function of $t$).
+
