@@ -71,3 +71,5 @@ is not.
 
 For example, the ODE $y'=3y$ is autonomous, since it doesn't depend on $t$ (assuming $y$ is a function of $t$).
 
+**Definition.** A solution to an ODE is a function that satisfies the ODE. 
+
