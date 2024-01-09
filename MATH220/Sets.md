@@ -40,9 +40,19 @@ $$\mathbb{Q} = \{\frac{a}{b} : a \in \Z, b \in \N\}$$
 
 The left side of the colon is a function, and the right side specifies the domain.
 
----
-
 Let $\mathbb{E}$ be the set of all even integers.
 
-$$\mathbb{E} = \{2n:n\in\Z \}$$
+$$\mathbb{E} = \{2n:n\in\Z\}$$
+
+---
+
+**Definition.** For a given set $S$, we write $|S|$ to represent its **cardinality**. For finite sets, this is the number of elements in $S$.
+
+$$|\emptyset| = 0$$
+$$|\{1, 2, 3\}| = 3$$
+$$|\N|=|\Z|=|\mathbb{Q}| < |\R| = |\mathbb{C}|$$
+
+---
+
+In this course, our goal is to prove that a given mathematical statement is always true.
 
