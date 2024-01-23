@@ -38,3 +38,22 @@ We rearrange the ODE to $y'+y=x$. Then we find the integrating factor $r(x)=e^{\
 Then we have $ye^x = \int^{x}{e^uu\text{d}u}+C$.
 
 Solving, we get $y(x)=x-1+Ce^{-x}$. We can use the initial value given to solve for $C$, and we find that it is $e$.
+
+## Slope fields
+
+You know what these are lol
+
+just draw out the slopes at a bunch of points $(y, f(y))$, and you can sketch solutions through the field by following it
+
+
+## Critical points
+
+**Definition.** Given a autonomonus ODE $y'=f(y)$, the critical points of the ODE are the solutions to $f(y)=0$. This is because in this case, $y'=0$, and $y$ never changes. In a slope field, it looks like a horizontal line.
+
+A **phase line** is used to analyze the function $f(y)$. It contains all the critical points and shows where the function is positive or negative as we change $y$. If $f(y) >0$, then $y'>0$, and the function increases, so we put a right chevron on the line at that point. A similar process is done for left chevrons.
+
+Any given **critical point** can be unstable or stable. An unstable point has the property that the arrows go "away" from it. Thus, it is only stable if we start on it. anywhere else will move away from the point.
+
+If the point is stable, then both arrows point to it. Then it will converge to this point. Finally, some points can be semi-stable, only converging form one side.
+
+
