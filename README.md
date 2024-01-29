@@ -1,4 +1,4 @@
-Andrew Wang's Notes. Updated Tuesday-Friday
+Andrew Wang's Notes. Updated MWF
 
 ---
 
