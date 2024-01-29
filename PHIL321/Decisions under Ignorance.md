@@ -39,3 +39,59 @@ Where $O_{ij}=v(a_i, s_j)$. ($v$ is a function that produces the numerical value
 Now we can say that an act $a_i$ weakly dominates act $a_j$ if and only if $v(a_i, s) \geq v(a_j, s)$ for EVERY state $s$. (This requires at least an ordinal scale).
 
 If we are to define strict dominance, we have the added condition that $v(a_i, s) > v(a_j, s)$ for at least one state $s$.
+
+### The Maximin Principle
+
+Compare the minimal values/worst outcomes  provided by each act, then choose an act whose min/worst is the maximal one among the minimums.
+
+In other words, MAXIMIZE the MINIMUMS.
+
+This principle can be more accurately described as:
+
+$$a_i \succcurlyeq a_j \leftrightarrow \min(a_i) \geq \min(a_j)$$
+
+This principle only requires an ordinal scale! (No difference or ratio needed)
+
+However, there is an issue with ties. Consider the following specification:
+
+| |$s_1$|$s_2$|
+|-|-----|----|
+|$a_1$|$1|$1000000|
+|$a_2$|$1|$2|
+
+This principle does not prefer the strictly better choice, $a_1$. It is indifferent! So we find that the general problem with this principle is that it is too pessimistic (only focuses on the worst case). This principle may be suitable for when we cannot afford risk.
+
+---
+
+#### Lexical Maximin
+
+Designed specifically to break ties. If the worst outcomes are equal, we can choose an act such that the second worst outcome is certain to be as good as possible. Then if that's a tie, go for the third, etc.
+
+If an act has several of the same outcome in different states, then we consider them all at once. For example, if we have the act
+
+| |$s_1$|$s_2$|$s_3$|$s_4$|
+|-|-----|----|-|-|
+|$a_1$|$1|$3|$1|$4|
+
+Then the first minimum is $1. Then the next is $3, and the third minimum is $4. We do NOT count $1 twice.
+
+We can state this principle as:
+
+
+$$
+\begin{align*}
+a_i \succ a_j &\leftrightarrow \text{there exists some positive integer } n \text{ such that } \\
+{\min}^{n}{a_i} &> {\min}^{n}{a_j} \text{ and } \\
+{\min}^{m}{a_i} &= {\min}^{m}{a_j} \text { for all } m < n
+\end{align*}
+$$
+
+where $\min^n$ represents the $n^{th}$ minimum.
+
+### The Maximax Principle
+
+Choose the best of the best! We maximize the POTENTIAL!! 🤑🤑🤑💰💰🤑💵🤑
+
+Contrary to the Minimax principle, it can be criticized for being too optimistic! It may be applicable in situations where no serious risk is involved.
+
+
