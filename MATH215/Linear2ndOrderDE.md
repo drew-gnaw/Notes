@@ -59,9 +59,99 @@ Therefore we find that $\ln{w}=\frac{1}{2}\ln{t}$, so $w=\sqrt{t}$.
 
 Then we go backwards. $v'=\sqrt{t}$, meaning $v=t^{3/2}$. You don't actually need the $\frac{2}{3}$ coefficient, since the solutions are of the form $y_2c_2$ anyways ($c_2$ takes care of it). So $y_2=y_1v=t^{-1}t^{3/2}=t^{1/2}=\sqrt{t}$.
 
+### 2nd order linear ODE with constant coefficients
 
+Now let's focus on the specific case where we have
 
+$$ay''+by'+cy=0,$$
 
+where $a, b, c$ are all constant. To solve this, we need to find two independent solutions. We will get these by solving a polynomial equation.
 
+Let's consider $y(x)=e^{rx}$, and assume that it is a solution. Note that $y'=re^{rx}$ and $y''=r^2e^{rx}$. Now we can plug it in:
 
+$$ar^2e^{rx}+bre^{rx}+ce^{rx}=0$$
+$$e^{rx}\left[ ar^2+br+c \right]=0$$
 
+Since an exponential is never $0$, the solutions are the solutions of $r$, which are the solutions to the polynomial equation $ax^2+bx+c=0$.
+
+To solve this, it's simple AF! First consider the discriminant:
+
+$$\Delta = b^2-4ac$$
+
+- If $\Delta > 0$, we're all good and we have two solutions.
+- If $\Delta = 0$, we have one double root.
+- If $\Delta < 0$, We have two complex conjugate roots.
+
+---
+
+Let's consider the first case. Just solve the quadratic equation in this case. Then we have:
+
+$$y_1=e^{\frac{-b+\sqrt{\Delta}}{2a}x}, y_2=e^{\frac{-b-\sqrt{\Delta}}{2a}x}$$
+
+And solutions are of the form $$y = C_1e^{r_1x} + C_2e^{r_2x}.$$
+
+---
+
+Now the second case. Since we only have one root, we have $r=\frac{-b}{2a}$. We already know that $y_1=e^{rx}$ is a solution. Then by reduction of order, we can show that $y_2=xe^{rx}$ is also a solution. Then the solutions are of the form
+
+$$y = C_1e^{rx} + C_2xe^{rx}$$
+$$y = (C_1 + C_2x)e^{rx}.$$
+
+---
+
+The last case is when the discriminant is $<0$. Then the two complex conjugate roots are of the form
+
+$$r=\frac{-b\pm i\sqrt{-\Delta}}{2a}.$$
+
+Recall that we can represent complex numbers in the plane by setting $z=x+iy$ (The $x$-coordinate is the real part, and the $y$-coordinate is the complex part).
+
+We can then obtain two solutions by "splitting":
+
+$$y_1=e^{\frac{-b}{2a}x}\cdot e^{\frac{i\sqrt{-\Delta}}{2a}x}, y_2=e^{\frac{-b}{2a}x}\cdot e^{\frac{-i\sqrt{-\Delta}}{2a}x}$$
+
+Note that the second term in each is a complex number.
+
+Then the solutions are of the form 
+
+$$y=Z_1e^{\frac{-b}{2a}x}\cdot e^{i\theta x} + Z_2e^{\frac{-b}{2a}x}\cdot e^{-i\theta x},$$
+
+where $\theta = \frac{\sqrt{-\Delta}}{2a}$, and $Z_1, Z_2$ are complex numbers such that $y$ is real. In other words, these constants are specifically chosen so that $y$ is real.
+
+Now this is an extremely inconvinient form for solutions. We will get a better final result.
+
+Also, from the **principle of superposition**, we know that any linear combination of $y_1, y_2$ is a solution.
+
+So our goal now is to write a linear combination of 
+
+$$z_1=e^{\frac{-b}{2a}x}\cdot e^{i\theta x}, z_2=e^{\frac{-b}{2a}x}\cdot e^{-i\theta x}$$
+
+above that will give a real number.
+
+A final remark is that $z_1$ and $z_2$ are complex conjugates of each other. This is because we can write
+
+$$e^{i\theta x} = \cos{(\theta x)}+i\sin{(\theta x)}$$
+$$e^{-i\theta x} = \cos{(-\theta x)}+i\sin{(-\theta x)}$$
+$$e^{-i\theta x} = \cos{(\theta x)}-i\sin{(\theta x)}$$
+
+So they are complex conjugates of each other, thanks to Euler's formula.
+
+Remember when we talked about how to represent complex numbers in the plane? Think of that plane. If we have two complex conjugates of each other, their complex parts are positive/negative versions of each other. So if we add them together, then the complex part disappears! We end up with a REAL number!
+
+So we have:
+
+$$e^{i\theta x} + e^{-i\theta x} = 2\cos(\theta x)$$
+$$e^{i\theta x} - e^{-i\theta x} = 2i\sin(\theta x)$$
+
+Here is De Moivre's formula,
+
+$$\cos(\theta x) = \frac{e^{i\theta x} + e^{-i\theta x}}{2}$$
+$$\sin(\theta x) = \frac{e^{i\theta x} - e^{-i\theta x}}{2i}$$
+
+Now by writing $z_1+z_2$ and $z_1-z_2$, we obtain two linearly independent real solutions
+
+$$y_1=e^{\frac{-b}{2a}x}\cdot \cos(\theta x), y_2=e^{\frac{-b}{2a}x}\cdot \sin(\theta x)$$
+
+So therefore the solutions are of the form
+$$y=e^{\frac{-b}{2a}x}{\left[ C_1\cos(\theta x) + C_2\sin(\theta x) \right]},$$
+
+where $\theta = \frac{\sqrt{-\Delta}}{2a}$.
