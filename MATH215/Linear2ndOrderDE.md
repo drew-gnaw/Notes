@@ -155,3 +155,73 @@ So therefore the solutions are of the form
 $$y=e^{\frac{-b}{2a}x}{\left[ C_1\cos(\theta x) + C_2\sin(\theta x) \right]},$$
 
 where $\theta = \frac{\sqrt{-\Delta}}{2a}$.
+
+**Example.** Solve:
+
+$$\begin{cases}
+y''+y'+y=0\\
+y(0)=0\\
+y'(0)=1
+\end{cases}$$
+
+We have 
+
+$$x'+x+1=0$$
+
+and 
+
+$$\theta = \frac{\sqrt3}{2}.$$
+
+The discriminant is negative. So we are in the third case.
+
+$$r=\frac{1\pm i\sqrt{3}}{2}$$
+$$y=e^{\frac{-1}{2}x}{\left[ C_1\cos(\frac{\sqrt3}{2} x) + C_2\sin(\frac{\sqrt3}{2} x) \right]},$$
+
+and
+
+$$y'=\frac{-1}{2}e^{\frac{-1}{2}x}{\left[ C_1\cos(\frac{\sqrt3}{2} x) + C_2\sin(\frac{\sqrt3}{2} x) \right]} + \\e^{\frac{-1}{2}x}\left[ -C_1\frac{\sqrt3}{2}\sin(\frac{\sqrt3}{2} x) + C_2\frac{\sqrt3}{2}\cos(\frac{\sqrt3}{2} x) \right].$$
+
+Now let's substitute the IC $y(0)=0$. We find that $C_1 = 0$. Using the other IC $y'(0)=1$, we find that $C_2=\frac{2}{\sqrt3}$ (The calculations are trivial and left as an exercise to the reader). So the unique solution is 
+
+$$y(x)=\frac{2}{\sqrt3} e^{\frac{-1}{2}x}\sin(\frac{\sqrt3}{2}x).$$
+
+Note that we have a unique solution thanks to the initial value, which narrows us down from many solutions that are a linear combination of two $y_1, y_2$ to just one.
+
+There is an alternative form of $y$ when $\Delta < 0$. If we find a solution in the form 
+
+$$e^{\alpha t}\cdot \left(A\cos(\beta t) + B\sin(\beta t) \right)$$
+
+We want to rewrite it as 
+
+$$e^{\alpha t}\cdot C\cos\left(\omega t - \phi \right).$$
+
+So that we can do the thingy yaknow where $\omega$ is frequency and $C$ is the amplitude n shit
+
+Okay so we want to basically turn $\left(A\cos(\beta t) + B\sin(\beta t) \right)$ into $C\cos\left(\omega t - \phi \right)$. In other words, we need to find $C, \omega, \phi$ such that 
+
+$$\left(A\cos(\beta t) + B\sin(\beta t) \right) =  C\cos\left(\omega t - \phi \right).$$
+
+We can immediately find that $\beta = \omega$.
+
+Using trig identities, we can say that
+
+$$C\cos(\omega t - \phi) = C\cos(\omega t)\cos(\phi) + C\sin(\omega t)\sin(\phi).$$
+
+From here it is obvious that $A = C\cos(\phi)$, $B = C\sin(\phi)$. Now we can divide the second equation by the first:
+
+$$\tan(\phi) = B/A$$
+
+and by adding the squares of the equations to each other:
+
+$$A^2+B^2=C^2(\cos^2(\phi) + \sin^2(\phi))$$
+$$A^2+B^2=C^2$$
+
+In order for $C_1$ and $\phi$ to be uniquely defined, we need to assume that $C > 0$ and $0 \leq \phi < 2\pi$.
+
+$$\begin{cases}
+C = \sqrt{A^2+B^2}\\
+\phi = \tan^{-1}(B/A)
+\end{cases}$$
+
+However, the range of $\tan^{-1}$ goes from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$, while we want $\phi$ to go from $0$ to $2\pi$!
+
