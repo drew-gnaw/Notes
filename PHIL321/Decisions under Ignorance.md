@@ -94,4 +94,41 @@ Choose the best of the best! We maximize the POTENTIAL!! 🤑🤑🤑💰💰�
 
 Contrary to the Minimax principle, it can be criticized for being too optimistic! It may be applicable in situations where no serious risk is involved.
 
+### The Optimism-Pessimism Principle (The $\alpha$-index rule)
+
+We consider both the worst and best possible outcomes for each act, according to one's own degree of optimism.
+
+We choose some $\alpha$ between $0$ and $1$ to represent our degree of optimism. If $\alpha = 0$, we are totally pessimistic, meaning we operate identically to the minimax principle. Similarly, if $\alpha = 1$, we are completely optimistic and we operate identically to the maximax principle.
+
+Now if $\max(a_i)$ is the best possible outcome for act $a_i$, and $\min(a_i)$ is the worst possible outcome for act $a_i$, then the value to be maximized is 
+
+$$\alpha\cdot\max(a_i) + (1 - \alpha)\cdot\min(a_i).$$
+
+We can object to this principle in that we ignore all the intermediate values, and only use the min and max.
+
+This principle requires an interval scale since we are taking weighted averages.
+
+### The Minimax Regret Principle
+
+Consider the following scenario:
+
+| |$s_1$|$s_2$|
+|-|-|-|
+|$a_1$|$1.50|$1.75
+|$a_2$|$1|$10000
+
+What if we choose act $a_1$ and it turns out that $s_2$ is true? Then we miss out on $\$10000-\$1.75=\$9998.25$. Let's call the amount of missed opportunity for an act in a state the **regret** for that act and state. So each cell has a regret value. The regret value is always maximized; we compare it to the largest entry in the same column. If we chose the best option, then the regret is $0$.
+
+We can actually construct a **regret table**:
+
+| regret |$s_1$|$s_2$|
+|-|-|-|
+|$a_1$|$0|$9998.25
+|$a_2$|$0.50|$0
+
+Then the max regret for act $a_1$ (highest regret value in a cell in that row) is $\$9998.25$, while the max regret for $a_2$ is $\$0.50$. Finally, we should minimize the regret, so we should choose $a_2$.
+
+
+
+
 
