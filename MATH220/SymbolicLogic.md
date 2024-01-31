@@ -49,3 +49,5 @@ The notation used is $P \leftrightarrow Q$.
 
 $\sim (P \lor Q) \equiv \sim P \land \sim Q\\$
 $\sim (P \land Q) \equiv \sim P \lor \sim Q$.
+
+
