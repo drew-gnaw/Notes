@@ -225,3 +225,10 @@ C = \sqrt{A^2+B^2}\\
 
 However, the range of $\tan^{-1}$ goes from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$, while we want $\phi$ to go from $0$ to $2\pi$!
 
+We need to consider four cases:
+- $A>0, B>0$: $\phi=\tan^{-1}(B/A)$
+- $A<0, B<0$: $\phi=\tan^{-1}(B/A)+\pi$
+- $A>0, B<0$: $\phi=\tan^{-1}(B/A)+2\pi$
+- $A<0, B>0$: $\phi=\tan^{-1}(B/A)+\pi$
+
+It's helpful to draw out the unit circle to understand how to shift the value of $\tan^{-1}(B/A)$, instead of memorizing it. But I can't really draw it here so thats your job!
