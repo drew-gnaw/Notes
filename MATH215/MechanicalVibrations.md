@@ -38,3 +38,77 @@ Since we do not consider damping, this is an example of free undamped motion. We
 Now let's throw some numbers in. $m=10^{-2}kg$, and $L=2.45\cdot10^{-2}m$. At time $y=0$, we lift the mass up $2\cdot10^{-2}m$. Now we want to find the amplitude and phase shift.
 
 Now we want to find $k$. At equilibrium, we know that the forces even out, so $kL=mg$ (since $L$ is the length at rest, which is equilibrium). Thus $k=\frac{mg}{L}$.
+
+---
+
+### Free undamped motion
+
+In general, any system that exhibits free undamped motion can be described by the second-order ODE
+
+$$x''+(\omega_0)^2x=0,$$
+
+where $\omega_0$ is determined by the parameters of the physical system.
+
+The solution to an ODE of this form is $x(t)=C\cdot \cos(\omega_0t-\phi)$, where $C$ and $\phi$ are determined from initial conditions of the problem.
+
+### Free damped motion
+
+Now if the system loses energy over time via some means of damping, then it is described by the ODE
+
+$$mx''+cx'+kx=0,$$
+
+where each coefficient $m,c,k>0$. We can normalize the ODE as follows:
+
+$$x''+2px'+(\omega_0)^2x=0$$
+
+where $p=\frac{c}{2m}$, ${\omega_0}^2=\frac{k}{m}$.
+
+Now we can perform reduction of order:
+
+$$x^2+2px+{\omega_0}^2=0$$
+$$\Delta = 4p^2-4{\omega_0}^2=4(p^2-{\omega_0}^2).$$
+
+Note that this is why we normalized the ODE. If we hadn't, this discriminant would have been really gross.
+
+### Types of damping
+
+Maybe you remember the terms **Overdamping** and **Underdamping**. Now these cases differ in the sign of the discriminant:
+
+---
+**Overdamping** happens when $\Delta > 0$. Then we have two distinct real roots, of the form 
+
+$$r_{1,2}=-p\pm\sqrt{p^2-{\omega_0}^2}.$$
+
+Then our solutions are a linear combination of these:
+
+$$x(t)=C_1e^{r_1t}+C_2e^{r_2t}.$$
+
+An important note to make is that $r_{1,2}$ are both negative. This is because $\sqrt{p^2-{\omega_0}^2} < p$. The rest is trivial and left as an exercise to the reader (i dont want to type it out).
+
+Now since both are negative, then we can say that $x(t)\rightarrow 0$ as $t\rightarrow \infty$.
+
+---
+
+**Critical damping** happens when $\Delta = 0$. Then we have a double real root, $-p$. Then our solutions are of the form
+
+$$x(t)=C_1e^{-pt}+C_2te^{-pt},$$
+
+which also goes to $0$ as $t\rightarrow \infty$ for the same reason as before.
+
+---
+
+**Underdamping** happens when $\Delta < 0$. Then we have two complex conjugate roots. They are of the form 
+
+$$r_{1,2}=-p\pm i\sqrt{{\omega_0}^2-p^2}$$
+
+(Note that the argument of $\sqrt{}$ is made positive by flipping the sign). Then, as seen before, 
+
+$$x(t)=e^{-pt}\cdot\left(A\cos{\omega_1}t+B\sin{\omega_1}t\right)$$
+
+Where $\omega_1=\sqrt{{\omega_0}^2-p^2}$. Which can be rewritten in the form
+
+$$x(t)=e^{-pt}\cdot C\cos\left({\omega_1}t-\phi\right),$$
+
+Which ALSO goes to $0$ as $t\rightarrow\infty$. The dominant term, $e^{-pt}$, "forces" oscillation to dampen. Since $-1\leq\cos(\theta)\leq1$, the system oscillates between $-Ce^-{pt}$ and $Ce^{-pt}$. 
+
+Now $\omega_1$ is the "pseudo-frequency" of the system. This is the frequency if we were not losing energy. 
