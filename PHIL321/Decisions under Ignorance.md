@@ -129,6 +129,100 @@ We can actually construct a **regret table**:
 Then the max regret for act $a_1$ (highest regret value in a cell in that row) is $\$9998.25$, while the max regret for $a_2$ is $\$0.50$. Finally, we should minimize the regret, so we should choose $a_2$.
 
 
+## BELOW IS FEB 6TH
+
+There are a lot of rules that we can use. Now we will decide which rules are good to keep.
+
+First, we will eliminate the **Principle of insufficient reason**. We argue that there is simply insufficient justification to assume that each state has the same probability. 
+
+It is also vulernable to manipulation in areas such as politics or marketing. Maybe you want to cover some opinion up, because you don't agree with it. You could proliferate several other opinions to "drown out" the one, reducing its weight.
+
+Next, let's talk about the **Majority rule**. There is the issue that it may lead to non-rational/intransitive group preference. For this reason, we also eliminate it.
+
+### The Mixture Condition/Randomization Condition, Optimism-Pessimism rule
+
+If a rational agent is indifferent between two acts, then the agent must also be indifferent between them and the $3^{\text{rd}}$ act of flipping a (fair) coin, and then choosing act 1 on heads and act 2 on tails.
+
+Now we claim that the Optimism-Pessimism rule is incompatible with the Randomization Condition. We will prove this by providing a counterexample.
+
+Take the following decision matrix for example:
+
+| |$s_1$|$s_2$|
+|-|-----|----|
+|$a_1$|1|0|
+|$a_2$|0|1|
+
+Given any $0\leq\alpha\leq1$, then we have
+
+$$U(a_1)=\alpha\max(a_1)+(1-\alpha)\min(a_1)$$
+$$U(a_1)=1\cdot\alpha+0\cdot(1-\alpha)$$
+$$U(a_1)=\alpha$$
+
+And we follow the same reasoning to find that $U(a_2)=\alpha$ as well. Then according to the Optimism-Pessimism rule, the agent should be indifferent between the two acts.
+
+Now let's introduce a third (randomized) act:
+
+| |$s_1$|$s_2$|
+|-|-----|----|
+|$a_1$|1|0|
+|$a_2$|0|1|
+|$a_3$|0.5|0.5|
+
+Now it is clear that $U(a_3)=0.5$, so as long as $\alpha\neq 0.5$, it is not true that $a_1$ is equally preferred as $a_3$. So the Optimism-Pessimism rule is not compatible with the Randomization Condition.
+
+### The Irrelevant Expansion/Alternatives Condition, Regret rule
+
+The addition of a new act, which is NOT regarded as better than the original ones, should not change a rational agent's ranking of the original acts.
+
+Now we will show that the minimax regret rule is incompatible with this condition.
+
+Consider the following decision matrix:
+
+| |$s_1$|$s_2$|$s_3$|
+|-|-----|----|--|
+|$a_1$|0|10|4|
+|$a_2$|5|2|10|
+
+The minimax regret rule prescribes $a_1$. Now we add a third act:
+
+| |$s_1$|$s_2$|$s_3$|
+|-|-----|----|--|
+|$a_1$|0|10|4|
+|$a_2$|5|2|10|
+|$a_2$|10|5|1|
+
+And now the minimax regret rule prescribes $a_2$. So we can construct a counterexample to show that the minimax regret rule is incompatible with the irrelevant expansion condition.
+
+We should note that the minimax regret rule seeks to MINIMIZE the MAXIMUM risk. In real-life applications, it is often extremely expensive/difficult to minimize risk. We could include some irrelevant state to our world, e.g. the state where an asteroid strikes earth. According to the minimax regret rule, we should probably build a shield or a big warhead or something to protect us from this asteroid. But it is probably better to consider other risks first, since the chances that an asteroid hits earth is very low.
+
+Also, we tend to neglect smaller risks that are extremely likely to happen, as they are overshadowed by the big risks.
+
+The minimax regret rule is not all bad. After 9/11, people got scared of flying, and to minimize the risk of being hijacked, decided on closer locations for vacations rather than Hawaii, for example.
+
+### Maximax rule
+
+This rule doesn't take risk into account at all, and thus is often considered a weak rule. However, there are situations where it could be useful, like when you have very little/nothing to lose. A small company has little to risk over a bold or controversial advertisement, whereas a large company cannot afford this risk.
+
+Also, optimism as a personality trait is usually considered attractive?? (idk korolev just said this and didn't elaborate)
+
+Maybe there's a hockey game where a team is behind by a couple goals and time is ticking. If the team does not take a risk, they will lose anyways, no matter how many goals are scored on them. So, it is advisable for this team to risk it all and try and tie/win the game.
 
 
+### The Schulze Method
 
+Developed in 1977 by some guy whose last name was Schulze. We didn't like the Majority rule earlier for the reason that it may yield intransitive results. This rule is also democratic, but will yield transitive results. This is adapted for use in certain electoral processes.
+
+Consider a voting ballot, where there are five candidates: $A,B,C,D,E$. You are asked to cast a vote on this ballot. Instead of choosing one out of the five, you are asked to **order** the candidates in order of preference, one to five. 
+
+**Step 0.** We collect the votes. Suppose $45$ people voted in total. Then we construct a table where we map each ordering to the number of people who voted with that ordering:
+
+|# of people who voted| Order of preference |
+|-|-|
+|5|ACBED|
+|5|ADECB|
+|8|BEDAC|
+|3|CABED|
+|7|CAEBD|
+... more
+
+The list need not be exhaustive, as long as the numbers add up to the total.
