@@ -212,7 +212,7 @@ Maybe there's a hockey game where a team is behind by a couple goals and time is
 
 Developed in 1977 by some guy whose last name was Schulze. We didn't like the Majority rule earlier for the reason that it may yield intransitive results. This rule is also democratic, but will yield transitive results. This is adapted for use in certain electoral processes.
 
-Consider a voting ballot, where there are five candidates: $A,B,C,D,E$. You are asked to cast a vote on this ballot. Instead of choosing one out of the five, you are asked to **order** the candidates in order of preference, one to five. 
+Consider a voting ballot, where there are five candidates: $A,B,C,D,E$. You are asked to cast a vote on this ballot. Instead of choosing one out of the five, you are asked to **order** the candidates in order of preference, one to five.
 
 **Step 0.** We collect the votes. Suppose $45$ people voted in total. Then we construct a table where we map each ordering to the number of people who voted with that ordering:
 
@@ -223,6 +223,70 @@ Consider a voting ballot, where there are five candidates: $A,B,C,D,E$. You are 
 |8|BEDAC|
 |3|CABED|
 |7|CAEBD|
-... more
+|2|CBADE|
+|7|DCEBA|
+|8|EBADC|
 
 The list need not be exhaustive, as long as the numbers add up to the total.
+
+**Step 1.** Now we need to compute pairwise preferences in a table.
+
+How many people prefer candidate $\text{A}$ over candidate $\text{B}$? We can add up the # of people who votes in each column that have $\text{A}$ before $\text{B}$. We will find that the number is 20. So in the cell in row $\text{A}$, column $\text{B}$, we write 20. 
+
+Note that the cell in row $\text{B}$, column $\text{A}$ is different, since it represents the number of people who prefer $\text{B}$ over $\text{A}$. In total, they should add up to 45 (and they do!).
+
+The rest of the table is filled out for brevity.
+
+||$\text{A}$|$\text{B}$|C|D|E|
+|-|-|-|-|-|-|
+|$\text{A}$|x|20|26|30|22|
+|$\text{B}$|25|x|16|33|18|
+|C|19|29|x|17|24|
+|D|15|12|28|x|14|
+|E|23|27|21|31|x|
+
+**Step 2.** Now it's time to draw a directed graph! Between any two candidates, we draw an arrow from the candidate that is more preferred to the candidate that is less preferred. In the case of $\text{A}$ and $\text{B}$, the arrow would be drawn from $\text{B}$ to $\text{A}$.
+
+On the arrow, we write the number of people who prefer the dominant candidate over the submissive candidate. In the case of $\text{B}$ $\rightarrow$ $\text{A}$, we would have a $25$ on the arrow.
+
+![Alt text](graph.png)
+
+**Step 3.** Now we need to consider the **strongest path strengths**. Essentially, we are looking for the maximin. The strength of a path is the strength of its weakest link. Let's take $\text{A}\rightarrow \text{B}$ in the above example. We can go from $\text{A}$ to $\text{B}$ in four different ways: $ACB, ACEB, ADCB, \text{ and } ADCEB$. We will compute each path's strength, and find that out of all of them, $ADCB$ has the highest strength at $28$. 
+
+Now in another table of the strongest strengths, we will record in the cell in row $A$ and column $B$ that the strongest strength is $28$.
+
+||$\text{A}$|$\text{B}$|C|D|E|
+|-|-|-|-|-|-|
+|$\text{A}$|x|28|28|30|24|
+|$\text{B}$|25|x|28|33|24|
+|C|25|29|x|29|24|
+|D|25|28|28|x|24|
+|E|25|28|28|31|x|
+
+Now we can interpret this table by comparing AB to BA.
+
+
+### The Condorcet Paradox
+
+Imagine three family members choosing a place to eat dinner. In the family, we have the dad, the mom, and the child. There are some options as to where they will eat. Each member has a "preference" as to where to eat, represented in this table.
+
+||mom|dad|child|
+|-|-|-|-|
+|DQ|3|1|2|
+|White Spot|2|3|1|
+|A&W|1|2|3|
+
+Now you might notice that it would be kind of difficult to make a decision. Let's try to use the majority rule, using pairwise comparisons:
+
+DQ vs White Spot: Mom and Child vote for DQ. So $\text{DQ} \succ \text{White Spot}$.
+
+Following a similar process, we find that the group will prefer White Spot over A&W. So $\text{White Spot} \succ \text{A\&W}$.
+
+If we do the last comparison, we will find that 
+
+$$\text{DQ} \succ \text{White Spot} \succ \text {A\&W}\succ \text{DQ}.$$
+
+Wait a second... this ain't right! It's non-transitive!
+
+The moral of the story: even when everyone is a rational agent, majority rule can lead into an irrational consensus decision.
+

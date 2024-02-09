@@ -112,3 +112,36 @@ $$x(t)=e^{-pt}\cdot C\cos\left({\omega_1}t-\phi\right),$$
 Which ALSO goes to $0$ as $t\rightarrow\infty$. The dominant term, $e^{-pt}$, "forces" oscillation to dampen. Since $-1\leq\cos(\theta)\leq1$, the system oscillates between $-Ce^-{pt}$ and $Ce^{-pt}$. 
 
 Now $\omega_1$ is the "pseudo-frequency" of the system. This is the frequency if we were not losing energy. 
+
+
+## Applications of Nonhomogeneous equations
+
+Go read about nonhomogeneous equations before reading this part!
+
+Consider the same mass-spring system where a mass is hanging from the ceiling. We add an external force to the system, pulling down with a force $F(t)\neq 0$.
+
+### Undamped motion
+
+We know that undamped motion can be described by the ODE
+
+$$x''+(\omega_0)^2x=0.$$
+
+So here, we need to consider the added external force. We now have that 
+
+$$x''+(\omega_0)^2x=F(t).$$
+
+We will say that $F(t)=F_0\cos(\omega t)$, where $F_0$ and $\omega$ describe the amplitude and frequency of the external force.
+
+Based on our study in nonhomogeneous equations, we find that $x=x_c+x_p$. Let's solve for $x_c$ first:
+
+$${x_c}''+{\omega_0}^2x_c=0$$
+
+We saw earlier that the solution to an equation of this form can be written as
+
+$$x_c=C\cdot \cos(\omega_0t-\phi).$$
+
+Now let's guess the form of $x_p$:
+
+$$x^s(A\cos(\omega t)+B\sin(\omega t))$$
+
+okay i give up im just gonna read the textbook the prof is not understandable today
