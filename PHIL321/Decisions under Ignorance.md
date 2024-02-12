@@ -290,3 +290,38 @@ Wait a second... this ain't right! It's non-transitive!
 
 The moral of the story: even when everyone is a rational agent, majority rule can lead into an irrational consensus decision.
 
+## Voting systems
+
+We can ask some American if they would prefer Joe Biden or Donald Trump as president. This is how the electoral system works! But there is an issue in that we don't consider *how strongly* one is preferred over the other. Therefore, the final result also does not reflect this.
+
+We have two major problems:
+
+1. The ranking problem (How to turn individual rankings into group decisions).
+2. The Condorcet problem (This problem arises when a ranking is non-transitive).
+
+### Lewis Carroll
+
+This was a guy. He was choosing a student for some honor. There are four candidates left for this honor, $A,B,C,D$, and there are 11 electors to choose which student gets the award.
+
+Let's say each elector gets to rank each of the four candidates. We will end up with a $11\times 4$ table:
+
+||1|2|3|4|5|6|7|8|9|10|11|
+|-|-|-|-|-|-|-|-|-|-|-|-|
+|Best|A|A|A|B|B|B|B|C|C|C|D|
+|Second|C|C|C|A|A|A|A|A|A|A|A|
+|Third|D|D|D|C|C|C|C|D|D|D|C|
+|Fourth|B|B|B|D|D|D|D|B|B|B|B|
+
+The first method we might use with this table is a majority vote. We see that candidate $B$ gets four votes, which is more than any other candidate. Therefore, we will choose candidate $B$.
+
+What are some criticisms of this method? We might notice that every elector that didn't choose $B$ as the first candidate placed them last instead.
+
+
+
+
+
+
+
+
+
+
