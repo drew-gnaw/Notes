@@ -22,7 +22,7 @@ Then we have proven the inductive step by transitivity. So by the principle of m
 
 **Example 2.** Let $F_n$ represent the $n^{\text{th}}$ fibonacci number. Prove that if $k\in\mathbb{N}$, then $3\mathrel{|}F_{4k}$. In other words, every fourth fibonacci number is divisible by 3.
 
-**Base Case.** $k=1$. Then $3\mathrel{|}F_4$. $F_4=3$. So the base case holds.
+**Base case.** $k=1$. Then $3\mathrel{|}F_4$. $F_4=3$. So the base case holds.
 
 **Inductive hypothesis.** $3 \mathrel{|} F_{4k}$ for some $k \geq 1$.
 
@@ -39,4 +39,42 @@ $$F_{4k+4}=3[F_{4k+1}+2a]$$
 
 So it is a multiple of $3$. By the principle of mathematical induction, the statement holds for all $k\geq 1$.
 
+---
+
+**Example 3.** Let $f(x)=x\log(x)$, and let $x>0, n\in\mathbb{N}$. Prove that if $n \geq 3$, then 
+
+$$f^{(n)}(x)=\frac{(-1)^n(n-2)!}{x^{n-1}}.$$
+
+**Base case.** Let $n=3$. Then
+
+$$f^{(3)}(x)=\frac{(-1)^3(3-2)!}{x^{3-1}}$$
+$$-\frac{1}{x^2}=\frac{(-1)}{x^{2}}$$
+
+So the base case is proven.
+
+**Inductive hypothesis.** Let 
+$$f^{(k)}(x)=\frac{(-1)^k(k-2)!}{x^{k-1}}$$ 
+
+for some $n=k$. 
+
+**Inductive step.** Now we will show that 
+$$f^{(k+1)}(x)=\frac{(-1)^{k+1}(k-1)!}{x^{k}}.$$
+
+We know that 
+
+$$f^{(k)}(x)=\frac{(-1)^k(k-2)!}{x^{k-1}}.$$
+
+We can differentiate both sides with respect to $x$:
+
+$$f^{(k+1)}(x)=(-1)^k(k-2)!\frac{\text{d}}{\text{d}x}(\frac{1}{x^{k-1}})$$
+$$f^{(k+1)}(x)=(-1)^k(k-2)!(1-k)x^{-k}$$
+$$f^{(k+1)}(x)=(-1)^{k+1}(k-1)(k-2)!x^{-k}$$
+$$f^{(k+1)}(x)=(-1)^{k+1}(k-1)!x^{-k}$$
+$$f^{(k+1)}(x)=\frac{(-1)^{k+1}(k-1)!}{x^k}$$
+
+So by the principle of mathematical induction, the statement holds for all $n\geq 3$. $\square$
+
+## Strong induction
+
+Assume all previous past cases instead of just the previous one.
 
