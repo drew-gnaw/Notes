@@ -299,6 +299,34 @@ We have two major problems:
 1. The ranking problem (How to turn individual rankings into group decisions).
 2. The Condorcet problem (This problem arises when a ranking is non-transitive).
 
+**Objectives:** Firstly, do we seek the best possible functioning/effective governments with strong leadership, vision/strategic vision, that probably makes some unpopular decisions OR a system that mirrors our own desires/hopes, not excluding anyone, so that it properly reflects the whole spectrum of views of the voters?
+
+We will see that different voting schemes favour one or the other.
+
+### Winner-take-all elections
+
+We count each vote and whoever gets the most votes wins it all!
+
+There are issues with this system. 
+- It will leave a potentially large amount of voters without any further influence. Once the president has be elected, up to half the country would be neglected. 
+- The minority loses all its influence.
+- It penalizes minority views
+- It could also potentially penalize majority views! For example, over 70% of the population wants Trudeau to step down, but this election style allows him to remain as prime minister.
+
+This system favours the first vision. It makes it easier for the government to pursue its objectives. However, it also makes it easier for dictatorships to arise. It doesn't provide enough checks to guard against bad decisions.
+
+### All-Inclusive elections
+
+This system favours the second vision.
+
+- No one's views are neglected
+- Each view is represented proportionally to their voting strengths
+- Typically work well in very stable/unchanging societies
+- But, in socities that are strongly divided, it yields highly ineffective systems. This can cause paralysis.
+
+
+
+
 ### Lewis Carroll
 
 This was a guy. He was choosing a student for some honor. There are four candidates left for this honor, $A,B,C,D$, and there are 11 electors to choose which student gets the award.
@@ -316,9 +344,33 @@ The first method we might use with this table is a majority vote. We see that ca
 
 What are some criticisms of this method? We might notice that every elector that didn't choose $B$ as the first candidate placed them last instead.
 
+### More voting scheme stuff
 
+Consider the preference of nine voters:
 
+||2 voters|3 voters|4 voters|
+|-|-|-|-|
+|1st choice|A|B|C
+|2nd choice|B|A|A
+|3rd choice|C|C|B
 
+By the majority rule, then C would be elected, but only $4/9$ of the population actually wanted him! A minority is being represented.
+
+**Weighted voting**
+
+Borda's scheme assigns "points" to each preference. For example, maybe the first choice gets 2 points, the second choice gets one point, and the last choice gets none. If we add up everything now, we will find that A wins, with 11 points versus B and C both with 8 points.
+
+**Preferential voting**
+
+Okay, what about preferential voting? We have two stages: the first is to see if there is a majority. If over 50% vote for one candidate then so be it, they are the majority.
+
+Otherwise we eliminate the worst candidate and their 2nd place votes go to the remaining candidate. Note that this does not require a "re-voting", we just need to re-analyze the votes. 
+
+In the context of our example, A is the worst candidate by majority, only looking at 1st preference. So A is eliminated. Then the two voters who voted for A will have their vote transferred to B. Therefore, B has 5 voters against C's 4, and wins by majority.
+
+**Runoff elections**
+
+Similar to preferential voting. If we have a majority then they win by default. Otherwise, we will hold a second round of elections, separated by some time (around a month). In this election, we elect among the leading two candidates.
 
 
 
