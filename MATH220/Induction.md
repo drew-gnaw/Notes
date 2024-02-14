@@ -78,3 +78,23 @@ So by the principle of mathematical induction, the statement holds for all $n\ge
 
 Assume all previous past cases instead of just the previous one.
 
+**Example 4.** Prove that every positive integer $n$ can be written as a sum of distinct non-negative powers of $2$.
+
+**Base case.** $n=1$. We see that $n=2^0$. The case is proven.
+
+**Inductive hypothesis.** Assume that for some $n\geq1$, every $1 \leq k \leq n$ can be written as a sum of distinct non-negative powers of $2$. 
+
+**Inductive step.** Now we will show that $n+1$ can be written as a sum of distinct non-negative powers of $2$.
+
+Let $l$ be the largest integer such that $2^l\leq n+1$. Then let $m=n+1-2^l$.
+
+If $m=0$, then $n+1=2^l$. Then $2^l$ is distinct and non-negative, so we are finished.
+
+Otherwise, then $m < n+1$. Then $m$ can be written as a sum of distinct non-negative powers of $2$. Now we also know that $n+1=m+2^l$. So we just have to show that $l$ is distinct from the powers in $m$.
+
+Now we know that $2^l>\frac{n+1}{2}$, since $2^{l+1}>n+1$. Then:
+
+$$-2^l<-\frac{n+1}{2}$$
+$$m=n+1-2^l<n+1-\frac{n+1}{2}=\frac{n+1}{2}<2^l.$$
+
+So $m$ is less than $2^l$, and thus its expansion cannot contain $l$. The case is proven, and the proof is complete by the principle of mathematical induction. $\square$
