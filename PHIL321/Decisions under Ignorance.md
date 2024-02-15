@@ -370,7 +370,7 @@ In the context of our example, A is the worst candidate by majority, only lookin
 
 **Runoff elections**
 
-Similar to preferential voting. If we have a majority then they win by default. Otherwise, we will hold a second round of elections, separated by some time (around a month). In this election, we elect among the leading two candidates.
+Similar to preferential voting. If we have a majority then they win by default. Otherwise, we will hold a second round of elections, separated by some time (around a month). In this election, we elect among the leading two candidates. The time difference allows for things to change according to shifting views!
 
 
 
