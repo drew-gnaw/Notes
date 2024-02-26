@@ -8,7 +8,7 @@ $$\int_\alpha^\beta{K(s,t)f(t)\text{d}t}.$$
 
 We call $K(s,t)$ a kernel and it is specific to the transform.
 
-**Definition.** The Laplace Transform $f$, denoted $\mathscr{L}\{f()t\}$ or $F(s)$, is defined by $\mathscr{L}\{f()t\} = F(s)= \int_0^\infty{e^{-st}f(t)\text{d}t}$. We assume that the integral is well-defined.
+**Definition.** The Laplace Transform $f$, denoted $\mathscr{L}\{f(t)\}$ or $F(s)$, is defined by $\mathscr{L}\{f(t)\} = F(s)= \int_0^\infty{e^{-st}f(t)\text{d}t}$. We assume that the integral is well-defined.
 
 So in the context of Laplace Transforms, the kernel is an exponential function.
 
@@ -44,6 +44,8 @@ for $s>0$.
 
 Now we will see a table that contains common Laplace Transforms for elementary functions. (You could and should do these as an exercise. You can use integration by parts!)
 
+**Table 1.**
+
 |$f(t)$|$F(s)$|
 |-|-|
 |$c$|$\frac{c}{s}$ for $s>0$|
@@ -52,6 +54,7 @@ Now we will see a table that contains common Laplace Transforms for elementary f
 |$\sin(wt)$|$w/(s^2+w^2)$|
 |$\cos(wt)$|$s/(s^2+w^2)$|
 |$u(t-a)$|$e^{-as}/s$|
+|$e^{-at}f(t)$|$F(s+a)$|
 
 **Remark.** We say that $f(t)$ is defined over a *time domain*, where $t$ is the time variable, and $F(s)$ is defined on a *frequency domain*. This makes sense when considering $s$ as an imaginary number (in this case, the kernel is a trigonometric function).
 
@@ -93,5 +96,81 @@ $$\mathscr{L}(\{e^{-at}f(t)\})=F(s+a).$$
 
 We can do this by using the above two theorems to decompose $F$ into separate terms, and use partial fraction decomposition of $Q$.
 
+So we want to find $\mathscr{L}^{-1}(F(s))$. Looking at table 1, we want to get some of the terms in that table to appear when we decompose $Q$. For example, some terms we'd like are $s+a$ and $s^2+w^2$.
 
+**Example 3.** Find $\mathscr{L}^{-1}(F(s))$, where $F(s)=\frac{3s+4}{s^2+s-2}$.
+
+We cannot immediately use the table, so we will perform partial fraction decomposition. We begin by factorizing $Q$:
+
+$$F(s)=\frac{3s+4}{(s+2)(s-1)}$$
+
+We perform the decomposition (I will NOT show you how to do it, its trivial and left as an exercise to the reader)
+
+$$F(s)=\frac{2/3}{s+2} + \frac{7/3}{s-1}$$
+
+Now we know that the Laplace Transform of a function of the form $e^{at}$ is $\frac{1}{s-a}$. Recall that we wanted to find 
+
+$$\mathscr{L}^{-1}(F(s))$$
+$$\mathscr{L}^{-1}\left(\frac{2/3}{s+2} + \frac{7/3}{s-1}\right)$$
+
+$$\frac{2}{3}\mathscr{L}^{-1}\left(\frac{1}{s+2}\right) + \frac{7}{3}\mathscr{L}^{-1}\left(\frac{1}{s-1}\right)$$
+
+By lineararity. Thus we have:
+
+$$\mathscr{L}^{-1}(F(s))=\frac{2}{3}e^{-2t} + \frac{7}{3}e^t.$$
+
+**Example 4.** Find $\mathscr{L}^{-1}(F(s))$, where $F(s)=\frac{s+5}{s^2+2s+5}$.
+
+Now we would like to follow the same steps as before, but $Q$ yields two complex roots, and therefore we cannot factor it as a product of monomials. Thus, its time to complete the square!!!
+
+$$F(s)=\frac{s+5}{s^2+2s+1+4}$$
+$$F(s)=\frac{s+5}{(s+1)^2+4}$$
+$$F(s)=\frac{s+5}{(s+1)^2+2^2}$$
+
+Now this kind of looks like the $s^2+w^2$ we want, but that pesky $+1$ is ruining things. Luckily, we have a gamer move we can pull here:
+
+$$F(s)=\frac{s+1+4}{(s+1)^2+2^2}$$
+$$F(s)=\frac{s+1}{(s+1)^2+2^2}+\frac{4}{(s+1)^2+2^2}$$
+
+We call the left term $F_1(s+1)$, so that $F_1(s)=\frac{s}{s^2+2^2}$. The right term similarly is $F_2(s)=\frac{4}{s^2+2^2}.$ Then We have that $\mathscr{L}^{-1}(F_1(s))=\cos(2t)$ and $\mathscr{L}^{-1}(F_2(s))=2\sin(2t)$. 
+
+Now we go back to what we originally wanted. We wanted to find $\mathscr{L}^{-1}(F(s))$, which we found was equal to $\mathscr{L}^{-1}(F_1(s+1))+ \mathscr{L}^{-1}(F_2(s+1))$. 
+
+$$=e^{-t}\left[ \mathscr{L}^{-1}(F_1(s))+ \mathscr{L}^{-1}(F_2(s))\right]$$
+$$=e^{-t}\left(\cos(2t)+2\sin(2t)\right).$$
+
+
+### Laplace transform of a derivative
+
+Suppose we wanted to find the Laplace Transform of $g'(t)$. So,
+
+$$\mathscr{L}(g'(t))=\int_0^\infty{e^{-st}g'(t)\text{d}t}$$
+
+Looks like we want to do integration by parts!! woohoo my favourite!
+
+$$\mathscr{L}(g'(t))=\left[ e^{-st}g(t) \right]_0^\infty-\int_0^\infty{-se^{-st}g(t)\text{d}t}$$
+$$\mathscr{L}(g'(t))=-g(0)+\int_0^\infty{se^{-st}g(t)\text{d}t}$$
+$$\mathscr{L}(g'(t))=-g(0)+s\int_0^\infty{e^{-st}g(t)\text{d}t}$$
+
+Hey... That looks like the Laplace Transform of $g$!
+
+$$\mathscr{L}\{g'(t)\}=s\mathscr{L}\{g(t)\}-g(0).$$
+
+Similarly, we can derive Laplace Transforms of the $n^{\text{th}}$ derivative by substituting into the previous result. For example, we have
+
+
+$$\mathscr{L}\{g''(t)\}=s\mathscr{L}\{g'(t)\}-g(0)$$
+$$\mathscr{L}\{g''(t)\}=s^2\mathscr{L}\{g(t)\}-g'(0)-sg(0)$$
+
+
+### Solving ODEs with Laplace transforms
+
+**Example 5.** Solve 
+
+$$\begin{cases}
+x''+x'-2x=3e^t\\
+x(0)=3,x'(0)=1
+\end{cases}$$
+
+Basically, we will Laplace transform both the LHS and RHS of the ODE. Let $X(s)=\mathscr{L}\{x(t)\}$.
 
