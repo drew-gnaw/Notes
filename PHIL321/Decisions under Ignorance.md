@@ -374,6 +374,14 @@ Similar to preferential voting. If we have a majority then they win by default. 
 
 
 
+## Kenneth Arrow's Impossibility Theorem
 
+There is NO way to come up with a unified group-decision rule for diverse, multiparty, multicriterion decisions based on rankings provided some certain requirements are placed. 
 
+The requirements:
 
+- If the individuals ALL agree, then so should the group. (Unanimous decisions should be respected)
+- If after the individual rankings have been used to create the group ranking, and you then add new options, the previously determined options should NOT change. This also holds for removal of options.
+- If the group ranking ends up preferring A over B, and we add another voter who also prefers A over B, the group ranking should not change.
+
+Now there is actually one exception to this rule: if we give all of the authority to only ONE decision maker, then all the requirements can be met.
