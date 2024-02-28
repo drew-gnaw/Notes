@@ -213,12 +213,22 @@ $$u(t-a)-u(t-b)$$
 More generally, we can describe any piecewise constant function as a linear combination of Heaviside functions.
 
 
+We can also use Heaviside functions to model the following case: Imagine we have some function $f(t)$ defined for $t\geq 0$. Now we want to shift the function to the right, $f(t-a)$. We will employ the Heaviside function to guarantee that $f(t-a)=0$ for all $t<a$, using a product:
+
+$$g(t)=u(t-a)\cdot f(t-a)$$
+
+Then we have the **2nd shift property**:
+
+- $\mathscr{L}\{u(t-a)f(t-a)\}=e^{-as}\mathscr{L}=e^{-as}F(s)$
+- $u(t-a)f(t-a)=\mathscr{L}^{-1}\left\{ e^{-as}F(s) \right\}$
 
 
+**Example 6.** Find the ILT (inverse Laplace Transform) of $\frac{1-e^{-2s}}{s^2}$.
 
+By linearity, we will split it up first:
 
+$$\mathscr{L}^{-1}\{\frac{1}{s^2}\}-\mathscr{L}^{-1}\{\frac{e^{-2s}}{s^2}\}$$
 
+$$t-\mathscr{L}^{-1}\{e^{-2s}\cdot\frac{1}{s^2}\}$$
 
-
-
-
+Now we can do the heaviside thing!!.
