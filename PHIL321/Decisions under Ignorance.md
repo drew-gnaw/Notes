@@ -77,7 +77,6 @@ Then the first minimum is $1. Then the next is $3, and the third minimum is $4. 
 
 We can state this principle as:
 
-
 $$
 \begin{align*}
 a_i \succ a_j &\leftrightarrow \text{there exists some positive integer } n \text{ such that } \\
@@ -100,7 +99,7 @@ We consider both the worst and best possible outcomes for each act, according to
 
 We choose some $\alpha$ between $0$ and $1$ to represent our degree of optimism. If $\alpha = 0$, we are totally pessimistic, meaning we operate identically to the minimax principle. Similarly, if $\alpha = 1$, we are completely optimistic and we operate identically to the maximax principle.
 
-Now if $\max(a_i)$ is the best possible outcome for act $a_i$, and $\min(a_i)$ is the worst possible outcome for act $a_i$, then the value to be maximized is 
+Now if $\max(a_i)$ is the best possible outcome for act $a_i$, and $\min(a_i)$ is the worst possible outcome for act $a_i$, then the value to be maximized is
 
 $$\alpha\cdot\max(a_i) + (1 - \alpha)\cdot\min(a_i).$$
 
@@ -128,12 +127,11 @@ We can actually construct a **regret table**:
 
 Then the max regret for act $a_1$ (highest regret value in a cell in that row) is $\$9998.25$, while the max regret for $a_2$ is $\$0.50$. Finally, we should minimize the regret, so we should choose $a_2$.
 
-
 ## BELOW IS FEB 6TH
 
 There are a lot of rules that we can use. Now we will decide which rules are good to keep.
 
-First, we will eliminate the **Principle of insufficient reason**. We argue that there is simply insufficient justification to assume that each state has the same probability. 
+First, we will eliminate the **Principle of insufficient reason**. We argue that there is simply insufficient justification to assume that each state has the same probability.
 
 It is also vulernable to manipulation in areas such as politics or marketing. Maybe you want to cover some opinion up, because you don't agree with it. You could proliferate several other opinions to "drown out" the one, reducing its weight.
 
@@ -207,7 +205,6 @@ Also, optimism as a personality trait is usually considered attractive?? (idk ko
 
 Maybe there's a hockey game where a team is behind by a couple goals and time is ticking. If the team does not take a risk, they will lose anyways, no matter how many goals are scored on them. So, it is advisable for this team to risk it all and try and tie/win the game.
 
-
 ### The Schulze Method
 
 Developed in 1977 by some guy whose last name was Schulze. We didn't like the Majority rule earlier for the reason that it may yield intransitive results. This rule is also democratic, but will yield transitive results. This is adapted for use in certain electoral processes.
@@ -231,7 +228,7 @@ The list need not be exhaustive, as long as the numbers add up to the total.
 
 **Step 1.** Now we need to compute pairwise preferences in a table.
 
-How many people prefer candidate $\text{A}$ over candidate $\text{B}$? We can add up the # of people who votes in each column that have $\text{A}$ before $\text{B}$. We will find that the number is 20. So in the cell in row $\text{A}$, column $\text{B}$, we write 20. 
+How many people prefer candidate $\text{A}$ over candidate $\text{B}$? We can add up the # of people who votes in each column that have $\text{A}$ before $\text{B}$. We will find that the number is 20. So in the cell in row $\text{A}$, column $\text{B}$, we write 20.
 
 Note that the cell in row $\text{B}$, column $\text{A}$ is different, since it represents the number of people who prefer $\text{B}$ over $\text{A}$. In total, they should add up to 45 (and they do!).
 
@@ -251,7 +248,7 @@ On the arrow, we write the number of people who prefer the dominant candidate ov
 
 ![Alt text](graph.png)
 
-**Step 3.** Now we need to consider the **strongest path strengths**. Essentially, we are looking for the maximin. The strength of a path is the strength of its weakest link. Let's take $\text{A}\rightarrow \text{B}$ in the above example. We can go from $\text{A}$ to $\text{B}$ in four different ways: $ACB, ACEB, ADCB, \text{ and } ADCEB$. We will compute each path's strength, and find that out of all of them, $ADCB$ has the highest strength at $28$. 
+**Step 3.** Now we need to consider the **strongest path strengths**. Essentially, we are looking for the maximin. The strength of a path is the strength of its weakest link. Let's take $\text{A}\rightarrow \text{B}$ in the above example. We can go from $\text{A}$ to $\text{B}$ in four different ways: $ACB, ACEB, ADCB, \text{ and } ADCEB$. We will compute each path's strength, and find that out of all of them, $ADCB$ has the highest strength at $28$.
 
 Now in another table of the strongest strengths, we will record in the cell in row $A$ and column $B$ that the strongest strength is $28$.
 
@@ -264,7 +261,6 @@ Now in another table of the strongest strengths, we will record in the cell in r
 |E|25|28|28|31|x|
 
 Now we can interpret this table by comparing AB to BA.
-
 
 ### The Condorcet Paradox
 
@@ -282,7 +278,7 @@ DQ vs White Spot: Mom and Child vote for DQ. So $\text{DQ} \succ \text{White Spo
 
 Following a similar process, we find that the group will prefer White Spot over A&W. So $\text{White Spot} \succ \text{A\&W}$.
 
-If we do the last comparison, we will find that 
+If we do the last comparison, we will find that
 
 $$\text{DQ} \succ \text{White Spot} \succ \text {A\&W}\succ \text{DQ}.$$
 
@@ -307,8 +303,9 @@ We will see that different voting schemes favour one or the other.
 
 We count each vote and whoever gets the most votes wins it all!
 
-There are issues with this system. 
-- It will leave a potentially large amount of voters without any further influence. Once the president has be elected, up to half the country would be neglected. 
+There are issues with this system.
+
+- It will leave a potentially large amount of voters without any further influence. Once the president has be elected, up to half the country would be neglected.
 - The minority loses all its influence.
 - It penalizes minority views
 - It could also potentially penalize majority views! For example, over 70% of the population wants Trudeau to step down, but this election style allows him to remain as prime minister.
@@ -323,9 +320,6 @@ This system favours the second vision.
 - Each view is represented proportionally to their voting strengths
 - Typically work well in very stable/unchanging societies
 - But, in socities that are strongly divided, it yields highly ineffective systems. This can cause paralysis.
-
-
-
 
 ### Lewis Carroll
 
@@ -356,27 +350,25 @@ Consider the preference of nine voters:
 
 By the majority rule, then C would be elected, but only $4/9$ of the population actually wanted him! A minority is being represented.
 
-**Weighted voting**
+### Weighted voting
 
 Borda's scheme assigns "points" to each preference. For example, maybe the first choice gets 2 points, the second choice gets one point, and the last choice gets none. If we add up everything now, we will find that A wins, with 11 points versus B and C both with 8 points.
 
-**Preferential voting**
+### Preferential voting
 
 Okay, what about preferential voting? We have two stages: the first is to see if there is a majority. If over 50% vote for one candidate then so be it, they are the majority.
 
-Otherwise we eliminate the worst candidate and their 2nd place votes go to the remaining candidate. Note that this does not require a "re-voting", we just need to re-analyze the votes. 
+Otherwise we eliminate the worst candidate and their 2nd place votes go to the remaining candidate. Note that this does not require a "re-voting", we just need to re-analyze the votes.
 
 In the context of our example, A is the worst candidate by majority, only looking at 1st preference. So A is eliminated. Then the two voters who voted for A will have their vote transferred to B. Therefore, B has 5 voters against C's 4, and wins by majority.
 
-**Runoff elections**
+### Runoff elections
 
 Similar to preferential voting. If we have a majority then they win by default. Otherwise, we will hold a second round of elections, separated by some time (around a month). In this election, we elect among the leading two candidates. The time difference allows for things to change according to shifting views!
 
-
-
 ## Kenneth Arrow's Impossibility Theorem
 
-There is NO way to come up with a unified group-decision rule for diverse, multiparty, multicriterion decisions based on rankings provided some certain requirements are placed. 
+There is NO way to come up with a unified group-decision rule for diverse, multiparty, multicriterion decisions based on rankings provided some certain requirements are placed.
 
 The requirements:
 
@@ -385,3 +377,26 @@ The requirements:
 - If the group ranking ends up preferring A over B, and we add another voter who also prefers A over B, the group ranking should not change.
 
 Now there is actually one exception to this rule: if we give all of the authority to only ONE decision maker, then all the requirements can be met.
+
+## More applications to Social Philosophy
+
+Strong (weak) Pareto-Dominance in a society:
+
+Let $P$ be a set of members of society.
+
+For each person $p\in\mathbb{P}$, let $\succ_p$ ($\succeq_p$) be a rational preference ordering among a set of options $O$, and let $u_p$ be the utility function for person $p$.
+
+**Definition.**
+
+An option $X$ strongly Pareto-dominates another option $Y$ if and only if for all $p\in\mathbb{P}$, $u_p(X)>u_p(Y)$.
+
+An option $X$ weakly Pareto-dominates another option $Y$ if and only if for all $p\in\mathbb{P}$, $u_p(X)\geq u_p(Y)$, and for some $p$, $u_p(X)>u_p(Y)$.
+
+### John Rawls' Theory of Justice
+
+Rawls' 2nd Principle of Justice:
+
+- An unequal distribution of resources is *just* if and only if it strongly Pareto-dominates all equal distributions;
+- An equal distribution of resources will be considered *just* if and only if there exists no other distribution, equal or unequal, that strongly Pareto-dominates it.
+
+Consider Elon Musk. As we are now, 
