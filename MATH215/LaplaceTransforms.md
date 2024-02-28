@@ -172,5 +172,53 @@ x''+x'-2x=3e^t\\
 x(0)=3,x'(0)=1
 \end{cases}$$
 
-Basically, we will Laplace transform both the LHS and RHS of the ODE. Let $X(s)=\mathscr{L}\{x(t)\}$.
+Basically, we will Laplace transform both the LHS and RHS of the ODE. Let $X(s)=\mathscr{L}\{x(t)\}$. We will find the equation satisfied by $X$ and solve it to get $x(t)=\mathscr{L}^{-1}\{X(s)\}$.
+
+$$\mathscr{L}\{x''+x'-2x\}=\mathscr{L}\{3e^t\}$$
+$$\mathscr{L}\{x''\}+\mathscr{L}\{x'\}-2\mathscr{L}\{x\}=\mathscr{L}\{3e^t\}$$
+
+$$s^2X(s)-sx(0)-x'(0)+sX(s)-x(0)-2X(s)=\frac{3}{s-1}$$
+
+$$(s^2+s-2)X(s)-3s-1-3=\frac{3}{s-1}$$
+
+$$X(s)=\left[\frac{3}{s-1}+3s+4\right]\cdot\frac{1}{s^2+s-2}$$
+
+Now that we have $X(s)$, we need to find the inverse Laplace Transform of it. 
+
+$$X(s)=\left[\frac{3}{s-1}+3s+4\right]\cdot\frac{1}{(s-1)(s+2)}$$
+$$X(s)=\left[\frac{3}{(s-1)^2(s+2)}+\frac{3s+4}{(s-1)(s+2)}\right]$$
+
+We previously calculated inverse LT of the right term, so let's use that result. We will now find the inverse LT of the left term.
+
+$$\mathscr{L}^{-1}\{X\}=\mathscr{L}^{-1}\left\{\frac{3}{(s-1)^2(s+2)}\right\}+\mathscr{L}^{-1}\left\{\frac{3s+4}{(s-1)(s+2)}\right\}$$
+$$\mathscr{L}^{-1}\{X\}=3\mathscr{L}^{-1}\left\{\frac{1}{(s-1)^2}+\frac{-1/3}{s-1}+\frac{1/3}{s+2}\right\}+\frac{2}{3}e^{-2t} + \frac{7}{3}e^t$$
+
+
+### Heaviside function
+
+The function just steps from $0$ to $1$. Given the heaviside function $u(t-a)$, the step occurs at $t=a$. Recall that the LT of this function is $e^{-as}/s$. 
+
+Our motivation is to solve heterogenous ODE's $\mathscr{L}\{y,y',y''\}=f(t)$, where $f$ looks like 
+
+![Alt text](jumpgraph.png)
+
+Now the goal is to describe functions like these in terms of Heaviside functions. Let's consider a simpler case, where the function is $1$ only between two numbers $a<t<b$.
+
+![Alt text](atobgraph.png)
+
+We notice that if $t<b$, then we just have the ordinary Heaviside function $u(t-a)$. Then, if $t>b$, we would like to subtract $1$ so that it jumps back down to $0$. This can be done as follows:
+
+$$u(t-a)-u(t-b)$$
+
+More generally, we can describe any piecewise constant function as a linear combination of Heaviside functions.
+
+
+
+
+
+
+
+
+
+
 
