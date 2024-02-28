@@ -56,3 +56,13 @@ $$|\N|=|\Z|=|\mathbb{Q}| < |\R| = |\mathbb{C}|$$
 
 In this course, our goal is to prove that a given mathematical statement is always true.
 
+**Example 2.** Let $T\subseteq N$.
+
+$$T=\left\{ 3x+5y:x,y\in\mathbb{Z}, x, y \geq 0, (x,y)\neq(0,0) \right\}$$
+
+$T$ is a subset of $\mathbb{N}$. There are some elements that are in $\mathbb{N}$ but not in $T$. The set which contains the *difference* of the two sets, i.e. the elements in $\mathbb{N}$ but not in $T$, is denoted $\mathbb{N}\setminus T$.
+
+
+
+
+
