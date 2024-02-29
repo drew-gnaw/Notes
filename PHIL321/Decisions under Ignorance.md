@@ -1,4 +1,6 @@
-## Decisions under Ignorance
+# Decisions under Ignorance
+
+## Monkfish
 
 **Example: Monkfish dinner.** A person is presented with two choices for food: either:
 
@@ -113,8 +115,8 @@ Consider the following scenario:
 
 | |$s_1$|$s_2$|
 |-|-|-|
-|$a_1$|$1.50|$1.75
-|$a_2$|$1|$10000
+|$a_1$|$1.50|$1.75|
+|$a_2$|$1|$10000|
 
 What if we choose act $a_1$ and it turns out that $s_2$ is true? Then we miss out on $\$10000-\$1.75=\$9998.25$. Let's call the amount of missed opportunity for an act in a state the **regret** for that act and state. So each cell has a regret value. The regret value is always maximized; we compare it to the largest entry in the same column. If we chose the best option, then the regret is $0$.
 
@@ -122,8 +124,8 @@ We can actually construct a **regret table**:
 
 | regret |$s_1$|$s_2$|
 |-|-|-|
-|$a_1$|$0|$9998.25
-|$a_2$|$0.50|$0
+|$a_1$|$0|$9998.25|
+|$a_2$|$0.50|$0|
 
 Then the max regret for act $a_1$ (highest regret value in a cell in that row) is $\$9998.25$, while the max regret for $a_2$ is $\$0.50$. Finally, we should minimize the regret, so we should choose $a_2$.
 
@@ -344,9 +346,9 @@ Consider the preference of nine voters:
 
 ||2 voters|3 voters|4 voters|
 |-|-|-|-|
-|1st choice|A|B|C
-|2nd choice|B|A|A
-|3rd choice|C|C|B
+|1st choice|A|B|C|
+|2nd choice|B|A|A|
+|3rd choice|C|C|B|
 
 By the majority rule, then C would be elected, but only $4/9$ of the population actually wanted him! A minority is being represented.
 
@@ -399,4 +401,33 @@ Rawls' 2nd Principle of Justice:
 - An unequal distribution of resources is *just* if and only if it strongly Pareto-dominates all equal distributions;
 - An equal distribution of resources will be considered *just* if and only if there exists no other distribution, equal or unequal, that strongly Pareto-dominates it.
 
-Consider Elon Musk. As we are now, 
+Less formally, one society is better (more just) than another iff the worst-off members of the first society do better than the worst-off members of the second society.
+
+Obviously, this comes with issues. Notably, it inherits all of the issues with the maximin principle!
+
+Let's think about a scenario where three people want a spot. Here is a table that describes this scenario:
+
+||Maite|Christa|Oliver|
+|-|-|-|-|
+|Nobody gets the spot (a1)|0|0|0|
+|Maite gets the spot (a2)|1|0|0|
+|Christa gets the spot (a3)|0|1|0|
+|Oliver gets the spot (a4)|0|0|1|
+|The spot is shared (a5)|1/3|1/3|1/3|
+|Maite preferred sharing (a6)|2/3|1/6|1/6|
+
+The only distributions that are equal are the first and the second-to-last. Every other row is unequal.
+
+a5 strongly dominates a1, so we can conclude that a1 is not just.
+
+We may also notice that no distribution strongly Pareto-dominates a5. Then by Rawls' 2nd Principle of Justice, we can say that a5 is just. No other distributions will be considered just, since they do not strongly dominate all equal distributions.
+
+### John Harsanyi's Theory of Justice
+
+Crucial point: Which rule should be chosen by a society for making decisions under ignorance?
+
+Rawls used the maximin, aiming to protect the interests of those at the bottom of society.
+
+But Harsanyi chooses the principle of Insufficient Reason, choosing to prioritize the average level of well-being in a society. This is an example of utilitarianism.
+
+The issue with taking the average is that a society with a massive divide in wealth will still have a high average thanks to the rich people, which is not representative of the whole society. Therefore, we might choose to use the median instead, which reflects this divide better.
