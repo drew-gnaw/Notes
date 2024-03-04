@@ -232,3 +232,74 @@ $$\mathscr{L}^{-1}\{\frac{1}{s^2}\}-\mathscr{L}^{-1}\{\frac{e^{-2s}}{s^2}\}$$
 $$t-\mathscr{L}^{-1}\{e^{-2s}\cdot\frac{1}{s^2}\}$$
 
 Now we can do the heaviside thing!!.
+
+So now we know that LT is useful for simplifying certain ODEs, given that we can compute the inverse.
+
+Now we will examine some more properties of the LT that can be applied to ODEs.
+
+### Laplace transform of an integral
+
+In some ODEs, we had to calculate antiderivatives of functions. For example, 
+
+$$\int_0^t{f(s)\text{d}s}$$
+
+**Theorem.** The LT of $\int_0^t{f(s)\text{d}s}$, $\mathscr{L}\{\int_0^t{f(s)\text{d}s}\}$, is equal to $\frac{1}{s}\mathscr{L}\{f\}$.
+
+$$\mathscr{L}\left\{\int_0^t{f(s)\text{d}s}\right\} =\frac{1}{s}\mathscr{L}\{f\}$$
+
+And by taking the ILT of both sides:
+
+$$\int_0^t{f(s)\text{d}s} =\mathscr{L}^{-1}\left\{\frac{1}{s}\mathscr{L}\{f\}\right\}.$$
+
+**Example 7.** Suppose we want to evaluate 
+
+$$\mathscr{L}^{-1}\left\{ \frac{s-1}{s((s-1)^2+2^2)} \right\}.$$
+
+We can use the theorem to write
+
+$$\mathscr{L}^{-1}\left\{ \frac{s-1}{s((s-1)^2+2^2)} \right\}=\int_0^t{f(\tau)\text{d}\tau},$$
+
+where
+
+$$f(t)=\mathscr{L}^{-1}\left\{\frac{s-1}{(s-1)^2+2^2}\right\}$$
+
+And we can show that $f(t)=e^t\cos(2t)$. We obtain $e^t$ using shift property and $2t$ using the table. Its left as an exercise for the reader.
+
+## Convolution product of LT
+
+**Definition.** For 2 functions $f,g$ defines for $t\geq0$, we define their **convolution product**, $(f*g)(t),$ as
+
+$$(f* g)(t)=\int_0^t{f(\tau)g(t-\tau)\text{d}\tau}$$
+
+Its used in probability and machine learning (tensorflow moment), but it is useful with LT too.
+
+Convolutions follow four properties:
+
+1. Commutativity : $f*g=g*f$
+2. Constant Multiple : $cf*g=c(f*g)$
+3. Associtivity : $f*(g*h)=(f*g)*h$
+4. Distributivity : $f*(g+h)=f*g+f*h$
+
+**Example 8.** Compute $f*g$, $f(t)=\cos(t)$, $g(t)=t$.
+
+Then we have, by the definition,
+
+$$(f*g)(t)=(g*f)(t)=\int_0^t{\tau}\cos(t-\tau)\text{d}\tau$$
+
+Note that we chose to use the convolution $g*f$ so that we would have an easier time integrating. With this integral, a single IBP will do.
+
+We find that $(f*g)(t)=1-\cos(t)$.
+
+Its time to take the LT of $f*g$. We get $\mathscr{L}\{f*g\}=\mathscr{L}\{1\}-\mathscr{L}\{\cos(t)\}$:
+
+$$=\frac{1}{s}-\frac{s}{s^2+1}$$
+$$=\frac{s^2+1-s^2}{s(s^2+1)}$$
+$$=\frac{1}{s(s^2+1)}$$
+$$=\frac{1}{s}\cdot\frac{1}{(s^2+1)}$$
+
+
+At this point the prof got a little confused lol but basically
+
+$$\mathscr{L}\{f*g\}=F(s)\cdot G(s),$$
+
+Where $F,G$ are the LT of $f,g$.
