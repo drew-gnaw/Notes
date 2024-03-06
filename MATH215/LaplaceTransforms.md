@@ -303,3 +303,102 @@ At this point the prof got a little confused lol but basically
 $$\mathscr{L}\{f*g\}=F(s)\cdot G(s),$$
 
 Where $F,G$ are the LT of $f,g$.
+
+**Example 9.** Find the LT of $h(t)=\int_0^t{e^{-(t-\tau)}sin(\tau)\text{d}\tau}$.
+
+We can represent $h(t)$ as a convolution. Specifically, we let $f(t)=e^{-t}, g(t)=\sin(t)$ (since $f*g=g*f$). Then we find that 
+
+$$\mathscr{L}\{f*g\}=F(s)\cdot G(s)$$
+$$\mathscr{L}\{f*g\}=\frac{1}{s+1}\frac{1}{s^2+1}.$$
+
+**Example 10.** Here we investigate the applications of this to solve ODEs. Solve the IVP
+
+$$\begin{cases}
+y''+2y'+y=\cos(t)\\
+y(0)=0, y'(0)=0.
+\end{cases}$$
+
+We take the LT of the LHS to get 
+
+$$\mathscr{L}\{y''\}+2\mathscr{L}\{y'\}+\mathscr{L}\{y\}$$
+$$=(s^2+2s+1)Y(s),$$
+
+since every initial value $y(0),y'(0)=0$ (so we can ignore those terms).
+
+Then we have
+
+$$Y(s)=\frac{1}{s^2+2s+1}\frac{s}{s^2+1}$$
+
+(the second factor is the LT of $\cos(t)$). Then we know that the solution $y(t)$ can be written as a convlution of these two terms:
+
+$$y(t)=y_1*y_2,\text{where } y_1=\frac{1}{s^2+2s+1}, y_2=\frac{s}{s^2+1}.$$
+
+Then at this point we just need to factor the denom, and apply shift property to find the ILT.
+
+## Transfer functions
+
+The goal is to add more terminology to interpret solutions of ODEs using LT. 
+
+Consider the problem
+
+$$\begin{cases}
+ay''+by'+cy=g(t)\\
+y(0)=y_0, y'(0)=y'_0.
+\end{cases}$$
+
+We will refer to these as **input/output systems**. The input is $g(t)$, and the output is $y(t)$. $a,b,c$ and the other initial conditions are parameters of the system.
+
+If we apply LT we get
+
+$$(as^2+bs+c)Y(s)-(as+b)y_0-ay'_0=G(s).$$
+
+Then
+
+$$Y(s)=\Phi(s)+\Psi(s),$$
+
+where
+
+$$\Phi(s)=\frac{(as+b)y_0+ay'_0}{as^2+bs+c}, \Psi(s)=\frac{G(s)}{as^2+bs+c}.$$
+
+Now we have decoupled the initial conditions, which sit in $\Phi$, and the input, which is in $\Psi$. We actually know how to take the ILT of $\Phi$ already.
+
+$$y(t)=\mathscr{L}^{-1}\{\Phi\}+\mathscr{L}^{-1}\{\Psi\}$$
+$$y(t)=\phi(s)+\psi(s).$$
+
+Now we see $\Psi(s)=\frac{1}{as^2+bs+c}G(s)$. Therefore, we have that
+
+$$\Psi=H(s)\cdot G(s),$$
+
+and $H(s)=\frac{1}{as^2+bs+c}$ is known as the *transfer function*. It "changes" $G(s)$ to become part of the output $y(t)$.
+
+Also, back to convolutions, we know that $\psi(t)=h(t)*g(t).$
+
+## Delta Dirac and impulse response
+
+We examine the application of the previous result in cases where $g(t)$ takes the form of an "impulse" input function.
+
+Consider the following "rectangular pulse" function $g(t)$:
+
+![](pulsegraph.png)
+
+This can be represented as the linear combination of two Heaviside functions, as we saw before. If the pulse lasts from $a$ to $b$, and reaches a height of $M$, we say that
+
+$$g(t)=M[u(t-a)-u(t-b)]$$
+$$\mathscr{L}\{g(t)\}=M[e^{-as}-e^{-bs}]$$
+
+To define a Delta Dirac function at $0$, let's consider the case where $a=0$ and $b\rightarrow a$. We also have $M$ such that $\int_0^{+\infty} g(t)\text{d}t=1$.
+
+Its obvious that $\int_0^{+\infty} g(t)\text{d}t=M(b-a)$ (its a RECTANGLE). So we can say that 
+
+$$M(b-a)=1 \text{ or } M=\frac{1}{b-a}$$
+
+**Definition.** The Dirac Delta function is a "generalized" function $S(t)$, such that
+
+$$\begin{cases}
+S(t)=0 \quad \forall t\neq 0\\
+\int_{-\infty}^{+\infty}{S(t)\text{d}t=1}
+\end{cases}$$
+
+We define a unit impulse at $a$ as $S(t-a)$.
+
+$$\mathscr{L}\{S(t-a)\}=e^{-sa}$$
