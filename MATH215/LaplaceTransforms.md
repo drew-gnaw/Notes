@@ -401,4 +401,30 @@ S(t)=0 \quad \forall t\neq 0\\
 
 We define a unit impulse at $a$ as $S(t-a)$.
 
-$$\mathscr{L}\{S(t-a)\}=e^{-sa}$$
+$$\mathscr{L}\{S(t)\}=\lim_{b\rightarrow 0}\mathscr{L}\{u(t)\}-\mathscr{L}\{S(t-b)\}$$
+
+$$=\frac{1-e^{-bs}}{bs}$$
+
+$$=1-bs+0(b)$$
+
+using taylor approximation.
+
+The last term is able to be neglected with respect to $b$. We can also write that $e^{-bs}\sim 1-bs$.
+
+**Remark.** $\int_{-\infty}^{+\infty}{S(t-\tau)f(\tau)\text{d}\tau=f(t)}.$
+
+**Example 11.** Solve
+
+$$\begin{cases}
+2y''+y'+2y=S(t-5)\\
+y(0)=0, y'(0)=0
+\end{cases}$$
+
+We can take the LT of both sides; the LT of $S(t-5)$ is $e^{-5s}$.
+
+The LHS is $(2s^2+s+2)\mathscr{L}\{y\}$.
+
+So we have that
+
+$$y(t)=\mathscr{L}^{-1}\left\{ e^{-5s}\frac{1}{2s^2+s+2} \right\}$$
+
