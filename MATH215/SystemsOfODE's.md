@@ -116,3 +116,48 @@ This means that $\lambda$ is an eigenvalue of $P$, and $\vec{v}$ is the associat
 
 $$\vec{x}=C_1\vec{v_1}e^{\lambda_1 t}+C_2\vec{v_2}e^{\lambda_2 t}+...+C_n\vec{v_n}e^{\lambda_n t}.$$
 
+**Example 3.** Solve
+
+$$\begin{cases}
+x_1'=x_1+12x_2\\
+x_2'=3x_1+x_2\\
+x_1(0)=0, x_2(0)=1
+\end{cases}$$
+
+We find the eigenvalues of $P$:
+
+$$\det(P-\lambda I_2)=\begin{bmatrix}
+1-\lambda & 12 \\
+3 & 1-\lambda
+\end{bmatrix}=(1-\lambda)^2-36$$
+$$=(1-\lambda+6)(1-\lambda-6)$$
+$$=(\lambda+5)(\lambda-7)$$
+
+So we find that $P$ has two eigenvalues $-5$ and $7$. Now we consider the eigenvalue $-5$.
+
+$$P\begin{bmatrix}v_1\\v_2\end{bmatrix}=-5\begin{bmatrix}v_1\\v_2\end{bmatrix}$$
+
+$$\begin{cases}
+v_1+12v_2=-5v_1\\
+3v_1+v_2=-5v_2\\
+\end{cases}$$
+
+And we find that $v_1=-2v_2$. Then we can choose any $v_1$ to get an eigenvector with eigenvalue $-5$, so we say that $\begin{bmatrix}2\\-1\end{bmatrix}$ is an eigenvector. Similarly, $\begin{bmatrix}2\\1\end{bmatrix}$ has eigenvalue $7$. Then general solutions are of the form
+
+$$\vec{x}=C_1\begin{bmatrix}2\\-1\end{bmatrix}e^{-5t}+C_2\begin{bmatrix}2\\1\end{bmatrix}e^{7t}.$$
+
+Then all that is left is to solve for the initial conditions.
+
+## Complex eigenvalues
+
+**Theorem.** If $P$ has a complex eigenvalue $\lambda = a+ib$, with eigenvector $\vec{v_1}$, then the complex conjugate $\bar{\lambda} = a-ib$ is also an eigenvalue with eigenvector $\bar{\vec{v_1}}$. Furthermore, the real and imaginary parts of $\vec{v_1}e^{\lambda t}$ are two independent solutions of $\vec{x'}=P\vec{x}$.
+
+An application of this theorem is that when we find a complex eigenvalue, we can then solve for an eigenvector:
+
+$$\vec{v}=\begin{bmatrix}v_{11}+iv_{12}\\v_{21}+iv_{22}\end{bmatrix},$$
+
+with $e^{\lambda t}=e^ae^{ib}t=e^{at}(\cos{bt}+i\sin{bt})$. Then we have that
+
+$$\vec{v}e^{\lambda t}=\begin{bmatrix}v_{11}+iv_{12}\\v_{21}+iv_{22}\end{bmatrix}e^{at}(\cos{bt}+i\sin{bt}).$$
+
+**Example 4.**
