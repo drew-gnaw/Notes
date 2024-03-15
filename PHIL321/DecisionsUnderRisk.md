@@ -67,3 +67,4 @@ $$\frac{1}{2}\cdot{2}+\frac{1}{4}\cdot{4}+\frac{1}{8}\cdot{8}+\frac{1}{16}\cdot{
 $$=1+1+1+1+1+...\implies\infty$$
 
 So the expected utility is infinity?? According to this, we should be willing to pay an infinite amount of utility for the chance to play this game. But this is absurd! Most people would not be happy to spend a billion dollars for the off-chance that they gain more money.
+
