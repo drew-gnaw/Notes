@@ -9,16 +9,16 @@ Consider two prisoners who each have the choice to either
 1. Admit to the crime
 2. Claim innocence
 
-Now the outcome of their sentences depends on both of their choices. We can sum it up in this table:
+Now the outcome of their sentences depends on both of their choices. We can sum it up in this table, where the numbers represent utility:
 |||Prisoner 1||
 |-|-|-|-|
-|||Defect|Cooperate|
-|Prisoner 2|Defect|3,3|25,1|
-||Cooperate|1,25|10,10|
+|||Defect|Confess|
+|Prisoner 2|Defect|3,3|1,4|
+||Confess|4,1|2,2|
 
-In other words, if both prisoners defect, they will each get 3 years in prison. We call this matrix the **Game Matrix**. 
+In other words, if both prisoners defect, they will each get 3 units of utility. We call this matrix the **Game Matrix**. 
 
-The paradox is that the optimal solution would be to both defect, getting 3 years each. But this is not the conclusion reached by either prisoner, as they both believe it is always better to cooperate, no matter what the other prisoner does. So this optimal solution is never realized.
+The paradox is that the optimal solution would be to both defect, getting 3 utility each. But this is not the conclusion reached by either prisoner, as they both believe it is always better to confess, no matter what the other prisoner does. So this optimal solution is never realized.
 
 ## A Taxonomy of Games
 
@@ -71,3 +71,104 @@ We assume some statements:
 ... and so on and so forth. The $n^{th}$ assumption is the $n^{th}$ order of CKR.
 
 **Definition.** To solve a game is to figure out which strategies rational players would choose if confronted with the game in question.
+
+## 2-Person Zero-sum games
+
+Zero-sum refers to the idea what "whatever the first player gains is what the second player loses." Take rock-paper-scissors for example. We can express the game matrix as follows:
+
+||Rock|Paper|Scissors|
+|-|-|-|-|
+|Rock|0,0|1, -1|-1, 1|
+|Paper|-1, 1|0,0|1, -1|
+|Scissors|1, -1|-1, 1|0,0|
+
+We can see that this is a zero-sum game, since the 1 and -1 balance each other out.
+
+We might simplify the table by only taking the first number of the two, since we know that it is a zero-sum game. The convention is that the number listed in any cell in the table below is the outcome for the **Row** player. If we wanted the outcomes for the **Column** player, we would just multiply everything by $-1$.
+
+||c1|c2|c3|
+|-|-|-|-|
+|r1|0|1|-1|
+|r2|-1|0|1|
+|r3|1|-1|0|
+
+So, the **Row** Player tries to maximize the numbers, whereas the **Column** player tries to minimize them.
+
+Let's consider the following matrix of a zero-sum game:
+
+||c1|c2|c3|
+|-|-|-|-|
+|r1|3|-3|7|
+|r2|4|5|6|
+|r3|2|7|-1|
+
+We want to analyze this game. We should start by looking for any dominances. By comparing each row to each other row, we find that none of the rows dominate each other. So at this point, the Row Player has no preferred choice.
+
+Now the column player might also look for dominances. Again, there are no dominances between the columns either. So dominance reasoning has no recommendations at all for this game! So we will need to apply some other reasoning to this game. Let's lay out some hypotheticals:
+
+- If **Row** knew that **Column** was going to play c1, then **Row** should play r2.
+- If **Column** knew that **Row** was going to play r2, then **Column** should play c1.
+
+Notice that these hypotheticals coincide! Both statements lead to the combination r2, c1. Now let's look at another starting point.
+
+- If **Row** knew that **Column** was going to play c2, then **Row** should play r3.
+- If **Column** knew that **Row** was going to play r3, then **Column** should play c3.
+
+This time, we don't find that the **Column** player will choose c2. There is no "loop" here! It's left as an exercise to the reader to find that there also isn't a loop if we start with the assumption of c3.
+
+**Definition.** A pair of strategies is said to be in **equilibrium** if and only if it holds that once the pair is chosen, then none of the players could reach a better outcome by unilaterally switching to another strategy.
+
+In the above example, neither player could switch their strategy to improve their score. It is certainly possible that either player could end up with a better score, but *both* players would need to change their strategy.
+
+In the case of the prisoner's dilemma, there is a situation where both prisoners get 3 units of utility. However, if we begin at that point, then either prisoner could gain more utility by changing their strategy to confessing. So this is not an **equilibrium**. The only equilibrium is when both prisoners confess.
+
+### The Minimax Condition (for 2-Person Zero-sum games only!)
+
+A pair of strategies is in **equilibrium** if (but not only if) the outcomes determined by them equal the minimal value of its row and the maximal value of its column.
+
+Consider the following game matrix for a 2-Person Zero-sum game:
+
+||c1|c2|c3|
+|-|-|-|-|
+|r1|9|8|7|
+|r2|7|-5|6|
+|r3|4|1|-2|
+
+Since we know that we can apply the Minimax Condition, we will look for the minimal values in each row. For each minimal value we find, we will check if it is the maximum in its column. This allows us to find equilibria. 
+
+In row 1, the value $7$ is the minimal value. It turns out that it is also the maximum value in its column. So the strategies r1, c3 are in equilibrium.
+
+You can go through and find out that there are no other equilibria.
+
+Another example!!
+
+||c1|c2|c3|
+|-|-|-|-|
+|r1|4|1|2|
+|r2|5|1|9|
+|r3|2|-3|-2|
+
+We find that both cells containing $1$ are the minima in their row, and the maxima in their column. So we have two equilibria? There is no problem with having two equilibria in the context of 2-Person Zero-sum games. This is because we can actually show that whenever we have two or more equilibria, then they will all exist along the same row(s) or column(s). 
+
+In the matrix
+
+||c1|c2|c3|c4|
+|-|-|-|-|-|
+|r1|1|2|3|1|
+|r2|0|5|0|0|
+|r3|1|6|4|1|
+
+There are even four equilibria! 
+
+We can revisit the rock-paper-scissors matrix:
+
+||c1|c2|c3|
+|-|-|-|-|
+|r1|0|1|-1|
+|r2|-1|0|1|
+|r3|1|-1|0|
+
+There are no _pure strategy_ equilibria! 
+
+Here is a Major Result: For 2-Person Zero-sum games, there is ALWAYS at least one equilibrium of either pure strategies or mixed strategies.
+
