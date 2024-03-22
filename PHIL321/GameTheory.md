@@ -172,3 +172,91 @@ There are no _pure strategy_ equilibria!
 
 Here is a Major Result: For 2-Person Zero-sum games, there is ALWAYS at least one equilibrium of either pure strategies or mixed strategies.
 
+## Mixed Strategies
+
+Let's consider rock-paper-scissors. We have the game matrix above.
+
+Here is an idea: instead of always using just one pure strategy (e.g. always playing scissors), we might use a mixture of these pure strategies with probabilities.
+
+**Example.** We could decide to play rock, paper, and scissors each one-third of the time. We write it out like
+
+$$[\text{Rock } \frac{1}{3}, \text{Paper } \frac{1}{3}, \text{Scissors } \frac{1}{3}]$$
+
+
+where the numbers represent the corresponding probabilities.
+
+Using this notation, we can describe a pure strategy where we only play rock:
+$$[\text{Rock } 1, \text{Paper } 0, \text{Scissors } 0].$$
+
+Now we want to know how to calculate the expected utility of playing one mixed strategy versus another. We will need to think of it as a **compound gamble**. Here is the game matrix again:
+
+||c1|c2|c3|
+|-|-|-|-|
+|r1|0|1|-1|
+|r2|-1|0|1|
+|r3|1|-1|0|
+
+We put the strategies against each other:
+
+$$[\text{r1 } 1, \text{r2 } 0, \text{r3 } 0].$$
+
+and
+
+$$[\text{c1 } 0, \text{c2 } 1, \text{c3 } 0].$$
+
+Intuitively, we see that the row player will always win. Let's formalize it a bit by looking at the expected utility of the row player:
+
+We will begin with the top left cell. We multiply the probability that the row player picks r1, the probability that the column player picks c1, and the value in the cell. In this case, we find that we have $1\times0\times0=0$.
+
+Now each cell in the top row is multiplied by the probability that the row player picks r1. So we can write it out like
+
+$$EU=1\times[0\times0+1\times1+0\times-1]+0\times[...]+0\times[...]$$
+
+In this case, we don't really need to care about what's inside the other two rows, since the probability is 0 anyways. So we find that the expected utility is 1, which is in favor of the row player.
+
+Okay, now what if we apply this calculation to mixed strategies?
+
+**Example 2.** Consider the following strategies:
+
+$$[\text{r1 } \frac{1}{3}, \text{r2 } \frac{1}{3}, \text{r3 } \frac{1}{3}] \text{ vs } [\text{c1 } 0, \text{c2 } 1, \text{c3 } 0].$$
+
+We get the following expansion:
+
+$$EU=\frac{1}{3}\times[0\times0+1\times1+0\times-1]+\\\frac{1}{3}\times[-1\times0+0\times1+1\times0]+\\\frac{1}{3}\times[1\times0+-1\times1+0\times1],$$
+
+Which evaluates to $EU=0$. So we are saying that if one player picks at random, and the other always chooses the scissors, then there is no expected gain or loss. This makes sense intuitively!
+
+**Example 3.** Consider the following strategies:
+
+$$[\text{r1 } \frac{1}{3}, \text{r2 } \frac{1}{3}, \text{r3 } \frac{1}{3}] \text{ vs } [\text{c1 } x, \text{c2 } y, \text{c3 } z],$$
+
+where $x+y+z=1$. Let's find the expected utility:
+
+$$EU=\frac{1}{3}\times[0\times x+1\times y+-1\times z]+\\\frac{1}{3}\times[-1\times x+0\times y+1\times z]+\\\frac{1}{3}\times[1\times x+-1\times y+0\times z]$$
+
+$$EU=\frac{1}{3}\times[-x+x+y-y+z-z]=0.$$
+
+So, playing at random, no matter the opponent's strategy, will always result in an expected utility of $0$.
+
+**Example 4.** Now what if the game is non-symmetric? Here is a game matrix:
+
+||c1|c2|
+|-|-|-|
+|r1|6|3|
+|r2|2|4|
+
+Lets compare the strategies
+
+$$[\text{r1 } \frac{1}{2}, \text{r2 } \frac{1}{2}] \text{ vs } [\text{c1 } 1, \text{c2 } 0]$$
+
+Then we have 
+
+$$EU=\frac{1}{2}[6\times1+3\times0+2\times1+4\times0]=4.$$
+
+Then the expected utility is 4 per round.
+
+If we consider the strategies 
+
+$$[\text{r1 } \frac{1}{2}, \text{r2 } \frac{1}{2}] \text{ vs } [\text{c1 } \frac{1}{2}, \text{c2 } \frac{1}{2}],$$
+
+We are not in equilibrium, since the row player is better off just always playing r1, which yields a greater expected utility.
