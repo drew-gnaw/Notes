@@ -275,4 +275,45 @@ The sum in each cell sums to $5$! This case is equivalent to some zero-sum game 
 
 ### Nash equilibrium
 
-When we look for the nash equilibrium, we look for our best responses to your opponent's moves. 
+When we look for the nash equilibrium, we look for our best responses to your opponent's moves. We can think of this as different to the maximin equilibrium, because the nash equilibrium is more optimistic whereas the maximin equlibrium is more pessimistic. 
+
+Back to the above table, we pretend we are the row player. The row player considers what they should play in each case: if the column player were to play c1, then we should respond with r3. This is equivalent to finding the maximum in each column.
+
+Then the column player does the same thing. We find that only in the case r2, c3, do we reach a point where both players are at a maximum gain. So this is the nash equilibrium.
+
+### Maximin equilibrium
+
+This is the pessimistic approach, where we think not in terms of best responses, but in terms of minimizing potential harm. We assume each player tries to be as nasty as possible, so you try to limit the damage.
+
+Let's take a look at the same table as before:
+
+||c1|c2|c3|
+|-|-|-|-|
+r1|2,3|1,4|2,3|
+r2|4,1|3,2|3,2|
+r3|5,0|4,1|1,4|
+
+Again, we will cosplay as the row player (row-playing haha). We think that if we play r1, then the column player could pick c2, leading to the worst outcome for you. In other words, we are searching each row to find the minimum.
+
+We find that the minimum in each row is 1, 3, and 1 respectively. So the maximum minimum we have is by playing r2, which guarantees at least 3. 
+
+Now we roleplay as the column player (cols-playing god im so fucking hilarious). If we play c1, then the worst payoff is 0. By searching for the minimum in each column, the best option for us is to play c3.
+
+So the maximin equilibrium agreed by both players is the combination of strategies r2, c3. Note that this equilibrium not necessarily need to coincide with the nash equilibrium!
+
+Here is another example:
+
+||c1|c2|c3|
+|-|-|-|-|
+r1|3,1|2,5|1,3|
+r2|4,8|1,2|0,9|
+
+The nash equilibrium is found by finding the max in each column and row. We find that it coincides at r1, c2.
+
+The maximin equilibrium is found by taking the min of each row first. The row player chooses r1 because the min is higher. Then the column player chooses c3. So the maximin equilibrium is r1, c3.
+
+So we have shown that it is not always the case that the nash and maximin equilibria are the same.
+
+
+
+
