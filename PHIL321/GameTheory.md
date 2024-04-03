@@ -260,3 +260,19 @@ If we consider the strategies
 $$[\text{r1 } \frac{1}{2}, \text{r2 } \frac{1}{2}] \text{ vs } [\text{c1 } \frac{1}{2}, \text{c2 } \frac{1}{2}],$$
 
 We are not in equilibrium, since the row player is better off just always playing r1, which yields a greater expected utility.
+
+## Constant-Sum Games
+
+In these games, the payoffs to the players always sum to the same constant.
+
+||c1|c2|c3|
+|-|-|-|-|
+r1|2,3|1,4|2,3|
+r2|4,1|3,2|3,2|
+r3|5,0|4,1|1,4|
+
+The sum in each cell sums to $5$! This case is equivalent to some zero-sum game if a proper linear transform is applied. 
+
+### Nash equilibrium
+
+When we look for the nash equilibrium, we look for our best responses to your opponent's moves. 
